@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blankstate — Design · Develop · Deliver</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --fg: #eeebe4;
+    --fg-muted: rgba(238,235,228,0.4);
+    --fg-faint: rgba(238,235,228,0.08);
+    --fg-subtle: rgba(238,235,228,0.15);
+    --accent: #eeebe4;
+    --font-display: 'Instrument Sans', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--bg);
+    color: var(--fg);
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: rgba(238,235,228,0.15);
+    color: var(--fg);
+  }
+
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,10,0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--fg-faint);
+    transition: all 0.4s ease;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: var(--fg);
+  }
+
+  .nav-logo svg { width: 32px; height: 32px; }
+
+  .nav-logo span {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -0.3px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--fg);
+    text-decoration: none;
+    font-size: 13px;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-links a:hover { opacity: 1; }
+
+  .nav-cta {
+    padding: 8px 20px;
+    border: 1.5px solid var(--fg-subtle);
+    border-radius: 6px;
+    color: var(--fg);
+    text-decoration: none;
+    font-size: 13px;
+    font-family: var(--font-display);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+  }
+
+  .nav-cta:hover {
+    background: var(--fg);
+    color: var(--bg);
+    opacity: 1;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 160px 48px 120px;
+    position: relative;
+  }
+
+  .hero-overline {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    opacity: 0.25;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(42px, 7vw, 88px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    max-width: 900px;
+    animation: fadeUp 0.8s ease 0.15s both;
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 20px);
+    opacity: 0.4;
+    max-width: 520px;
+    margin-top: 28px;
+    line-height: 1.7;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+
+  .hero-cta-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 48px;
+    animation: fadeUp 0.8s ease 0.45s both;
+  }
+
+  .btn-primary {
+    padding: 14px 32px;
+    background: var(--fg);
+    color: var(--bg);
+    border: none;
+    border-radius: 6px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  .btn-secondary {
+    padding: 14px 32px;
+    background: transparent;
+    color: var(--fg);
+    border: 1.5px solid var(--fg-subtle);
+    border-radius: 6px;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover { border-color: rgba(238,235,228,0.4); }
+
+  /* Hero fold decoration */
+  .hero-fold {
+    position: absolute;
+    right: 48px;
+    bottom: 80px;
+    opacity: 0.04;
+    animation: fadeIn 1.5s ease 0.6s both;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 120px 48px;
+    border-top: 1px solid var(--fg-faint);
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    opacity: 0.2;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 48px);
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    line-height: 1.15;
+  }
+
+  .section-desc {
+    font-size: 17px;
+    opacity: 0.4;
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 64px;
+  }
+
+  /* ─── SERVICES GRID ─── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px;
+    background: var(--fg-faint);
+    border: 1px solid var(--fg-faint);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--bg);
+    padding: 48px 36px;
+    transition: background 0.4s ease;
+    cursor: default;
+  }
+
+  .service-card:hover { background: rgba(238,235,228,0.02); }
+
+  .service-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 24px;
+    opacity: 0.5;
+  }
+
+  .service-card h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+  }
+
+  .service-card p {
+    font-size: 14px;
+    opacity: 0.35;
+    line-height: 1.7;
+  }
+
+  /* ─── PROCESS ─── */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 48px;
+    counter-reset: step;
+  }
+
+  .process-step {
+    counter-increment: step;
+    position: relative;
+    padding-top: 48px;
+  }
+
+  .process-step::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    top: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 52px;
+    opacity: 0.06;
+    letter-spacing: -2px;
+  }
+
+  .process-step h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .process-step p {
+    font-size: 14px;
+    opacity: 0.35;
+    line-height: 1.7;
+  }
+
+  /* ─── WORK / PORTFOLIO TEASER ─── */
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
+  }
+
+  .work-card {
+    aspect-ratio: 16/10;
+    border-radius: 10px;
+    border: 1px solid var(--fg-faint);
+    background: linear-gradient(135deg, rgba(238,235,228,0.02) 0%, rgba(238,235,228,0.005) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s ease;
+    cursor: pointer;
+  }
+
+  .work-card:hover { border-color: var(--fg-subtle); }
+
+  .work-card .work-tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.25;
+    margin-bottom: 8px;
+  }
+
+  .work-card h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.3px;
+  }
+
+  .work-card .fold-deco {
+    position: absolute;
+    top: 0; right: 0;
+    opacity: 0.06;
+  }
+
+  /* ─── ABOUT ─── */
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 16px;
+    opacity: 0.4;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 48px;
+    letter-spacing: -2px;
+    opacity: 0.8;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    opacity: 0.3;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── CONTACT / CTA ─── */
+  .cta-section {
+    text-align: center;
+    padding: 160px 48px;
+  }
+
+  .cta-section .section-title {
+    max-width: 600px;
+    margin: 0 auto 20px;
+  }
+
+  .cta-section .section-desc {
+    max-width: 440px;
+    margin: 0 auto 48px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 48px;
+    border-top: 1px solid var(--fg-faint);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-left svg { width: 24px; height: 24px; opacity: 0.3; }
+
+  .footer-left span {
+    font-size: 12px;
+    opacity: 0.2;
+    letter-spacing: 0.5px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: var(--fg);
+    text-decoration: none;
+    font-size: 12px;
+    opacity: 0.2;
+    transition: opacity 0.3s;
+  }
+
+  .footer-links a:hover { opacity: 0.6; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 140px 24px 80px; }
+    section { padding: 80px 24px; }
+    .about-content { grid-template-columns: 1fr; gap: 48px; }
+    .hero-fold { display: none; }
+    footer { flex-direction: column; gap: 24px; padding: 36px 24px; }
+    .hero-cta-row { flex-direction: column; }
+    .btn-primary, .btn-secondary { text-align: center; }
+    .cta-section { padding: 100px 24px; }
+    .work-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="6" width="68" height="68" fill="none" stroke="#eeebe4" stroke-width="2.8" rx="5"/>
+      <polygon points="74,6 74,34 46,6" fill="#eeebe4" opacity="0.18"/>
+      <line x1="46" y1="6" x2="74" y2="34" stroke="#eeebe4" stroke-width="2" opacity="0.45"/>
+    </svg>
+    <span>blankstate</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Kontakt os</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <p class="hero-overline">Design · Develop · Deliver</p>
+  <h1>Vi bygger websites<br>der gør indtryk.</h1>
+  <p class="hero-sub">Fra blank side til færdig løsning. Vi designer og udvikler moderne hjemmesider der skiller sig ud og skaber resultater for din virksomhed.</p>
+  <div class="hero-cta-row">
+    <a href="#contact" class="btn-primary">Start dit projekt</a>
+    <a href="#work" class="btn-secondary">Se vores arbejde</a>
+  </div>
+  <div class="hero-fold">
+    <svg viewBox="0 0 400 400" width="400" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="20" width="360" height="360" fill="none" stroke="#eeebe4" stroke-width="3" rx="12"/>
+      <polygon points="380,20 380,140 260,20" fill="#eeebe4" opacity="0.3"/>
+      <line x1="260" y1="20" x2="380" y2="140" stroke="#eeebe4" stroke-width="2" opacity="0.5"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section id="services">
+  <div class="reveal">
+    <p class="section-label">Services</p>
+    <h2 class="section-title">Alt du har brug for.<br>Intet du ikke har.</h2>
+    <p class="section-desc">Vi tilbyder en komplet pakke fra design til deployment — altid med fokus på kvalitet, hastighed og dit brands identitet.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" rx="4"/>
+        <line x1="2" y1="12" x2="38" y2="12" stroke="currentColor" stroke-width="1"/>
+        <rect x="8" y="18" width="12" height="8" fill="none" stroke="currentColor" stroke-width="1" rx="1"/>
+      </svg>
+      <h3>Webdesign</h3>
+      <p>Skræddersyede designs der reflekterer dit brand. Ingen templates — alt bygges fra bunden med din vision i centrum.</p>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="12,14 4,22 12,30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <polyline points="28,14 36,22 28,30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="22" y1="10" x2="18" y2="34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <h3>Udvikling</h3>
+      <p>Clean code, hurtige load-tider, og responsivt design. Vi bygger med moderne teknologier der skalerer med din forretning.</p>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M20,4 A16,16 0 0,1 36,20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="20" cy="20" r="3" fill="currentColor" opacity="0.4"/>
+      </svg>
+      <h3>SEO & Performance</h3>
+      <p>Optimeret til søgemaskiner fra dag ét. Vi sørger for at din side er hurtig, tilgængelig og synlig i søgeresultaterne.</p>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="2" width="24" height="36" fill="none" stroke="currentColor" stroke-width="1.5" rx="4"/>
+        <line x1="16" y1="32" x2="24" y2="32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <h3>Responsivt Design</h3>
+      <p>Din side ser perfekt ud på alle enheder — desktop, tablet og mobil. Ingen kompromiser på brugeroplevelsen.</p>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20,4 L36,14 L36,28 L20,38 L4,28 L4,14 Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="20" y1="4" x2="20" y2="38" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+        <line x1="4" y1="14" x2="36" y2="14" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+      </svg>
+      <h3>Hosting & Drift</h3>
+      <p>Vi tager os af den tekniske drift, så du kan fokusere på din forretning. Sikker, hurtig og pålidelig hosting.</p>
+    </div>
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8,32 L16,18 L22,26 L28,12 L34,20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="4" y1="36" x2="36" y2="36" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+      </svg>
+      <h3>Vedligeholdelse</h3>
+      <p>Løbende opdateringer, sikkerhedspatches og indholdsændringer. Vi holder din side frisk og sikker over tid.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ─── -->
+<section id="process">
+  <div class="reveal">
+    <p class="section-label">Process</p>
+    <h2 class="section-title">Fra idé til launch<br>i fire trin.</h2>
+    <p class="section-desc">Vores proces er transparent og struktureret — du ved altid præcis hvor vi er, og hvad der sker næst.</p>
+  </div>
+  <div class="process-steps reveal">
+    <div class="process-step">
+      <h3>Discover</h3>
+      <p>Vi lærer din virksomhed at kende. Mål, målgruppe, konkurrenter og ambitioner — alt sammen danner fundamentet for designet.</p>
+    </div>
+    <div class="process-step">
+      <h3>Design</h3>
+      <p>Vi skaber et visuelt koncept der matcher dit brand. Du ser mockups og giver feedback inden vi skriver en eneste linje kode.</p>
+    </div>
+    <div class="process-step">
+      <h3>Develop</h3>
+      <p>Designet omsættes til en hurtig, responsiv og SEO-optimeret hjemmeside med clean code og moderne teknologier.</p>
+    </div>
+    <div class="process-step">
+      <h3>Deliver</h3>
+      <p>Vi launcher din side, tester alt grundigt og sikrer at den performer optimalt. Herefter starter vores support og vedligeholdelse.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WORK ─── -->
+<section id="work">
+  <div class="reveal">
+    <p class="section-label">Selected Work</p>
+    <h2 class="section-title">Projekter der taler<br>for sig selv.</h2>
+    <p class="section-desc">Et udpluk af vores seneste arbejde. Hvert projekt er unikt — ligesom de virksomheder vi samarbejder med.</p>
+  </div>
+  <div class="work-grid reveal">
+    <div class="work-card">
+      <svg class="fold-deco" viewBox="0 0 120 120" width="120" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="120,0 120,48 72,0" fill="#eeebe4" opacity="0.4"/>
+        <line x1="72" y1="0" x2="120" y2="48" stroke="#eeebe4" stroke-width="1" opacity="0.3"/>
+      </svg>
+      <span class="work-tag">Website Redesign</span>
+      <h3>Falster Fitness</h3>
+    </div>
+    <div class="work-card">
+      <svg class="fold-deco" viewBox="0 0 120 120" width="120" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="120,0 120,48 72,0" fill="#eeebe4" opacity="0.4"/>
+        <line x1="72" y1="0" x2="120" y2="48" stroke="#eeebe4" stroke-width="1" opacity="0.3"/>
+      </svg>
+      <span class="work-tag">Coming Soon</span>
+      <h3>Dit projekt?</h3>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="reveal">
+    <p class="section-label">Om os</p>
+    <h2 class="section-title">Små nok til at<br>vi kender dig.</h2>
+  </div>
+  <div class="about-content reveal">
+    <div class="about-text">
+      <p>Blankstate er et digitalt bureau baseret i Nykøbing Falster. Vi kombinerer stærkt design med solid teknisk udvikling for at skabe hjemmesider der ikke bare ser godt ud — men også performer.</p>
+      <p>Vi tror på at god webdesign starter med at forstå din forretning. Derfor arbejder vi tæt sammen med dig fra første møde til final launch.</p>
+      <p>Vores stack er moderne og fleksibel. Vi arbejder med de teknologier der giver mest mening for dit projekt — aldrig one-size-fits-all.</p>
+    </div>
+    <div class="about-stats">
+      <div>
+        <div class="stat-number">4+</div>
+        <div class="stat-label">Års erfaring</div>
+      </div>
+      <div>
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Custom design</div>
+      </div>
+      <div>
+        <div class="stat-number">24h</div>
+        <div class="stat-label">Responstid</div>
+      </div>
+      <div>
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Ambitioner</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT CTA ─── -->
+<section id="contact" class="cta-section">
+  <div class="reveal">
+    <p class="section-label">Kontakt</p>
+    <h2 class="section-title">Klar til at starte dit næste projekt?</h2>
+    <p class="section-desc">Fortæl os om din idé — vi vender tilbage inden for 24 timer med et uforpligtende bud.</p>
+    <a href="mailto:hello@blankstate.dk" class="btn-primary">hello@blankstate.dk</a>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-left">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="6" width="68" height="68" fill="none" stroke="#eeebe4" stroke-width="2.4" rx="4"/>
+      <polygon points="74,6 74,34 46,6" fill="#eeebe4" opacity="0.18"/>
+      <line x1="46" y1="6" x2="74" y2="34" stroke="#eeebe4" stroke-width="1.8" opacity="0.45"/>
+    </svg>
+    <span>© 2026 Blankstate. Alle rettigheder forbeholdes.</span>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#">LinkedIn</a></li>
+    <li><a href="#">Instagram</a></li>
+    <li><a href="mailto:hello@blankstate.dk">Email</a></li>
+  </ul>
+</footer>
+
+<!-- ─── SCROLL REVEAL ─── -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
