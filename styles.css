@@ -99,7 +99,7 @@ nav.scrolled {
   color: var(--fg);
   text-decoration: none;
   font-size: 13px;
-  opacity: 0.4;
+  opacity: 0.55;
   transition: opacity 0.3s;
   letter-spacing: 0.5px;
   position: relative;
@@ -327,7 +327,7 @@ section {
 
 .service-card p {
   font-size: 14px;
-  opacity: 0.35;
+  opacity: 0.5;
   line-height: 1.7;
 }
 
@@ -667,7 +667,7 @@ section {
 
 .process-step p {
   font-size: 14px;
-  opacity: 0.35;
+  opacity: 0.5;
   line-height: 1.7;
 }
 
@@ -708,7 +708,7 @@ section {
   font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  opacity: 0.35;
+  opacity: 0.5;
   font-family: var(--font-display);
   font-weight: 500;
 }
@@ -723,7 +723,7 @@ section {
 
 .pricing-desc {
   font-size: 14px;
-  opacity: 0.35;
+  opacity: 0.5;
   line-height: 1.6;
   margin-bottom: 32px;
   min-height: 44px;
