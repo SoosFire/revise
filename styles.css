@@ -455,7 +455,7 @@ section {
 .compare-card {
   border: 1px solid var(--fg-faint);
   border-radius: 12px;
-  padding: 28px;
+  padding: 36px 32px;
   transition: border-color 0.4s ease;
 }
 
@@ -469,7 +469,7 @@ section {
   font-size: 13px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 32px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -482,225 +482,109 @@ section {
 }
 
 .compare-before .dot { background: #ef4444; }
-.compare-after .dot { background: #4ade80; }
+.compare-after .dot { background: #22c55e; }
 
-/* Browser mockup frame */
-.browser-frame {
-  border: 1px solid var(--fg-faint);
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 24px;
-}
-
-.browser-bar {
+/* Lighthouse-style gauges */
+.gauges {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   gap: 12px;
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--fg-faint);
-  background: rgba(238,235,228,0.02);
+  margin-bottom: 32px;
 }
 
-.browser-dots {
+.gauge-item {
   display: flex;
-  gap: 5px;
-}
-
-.browser-dots span {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--fg);
-  opacity: 0.12;
-}
-
-.browser-url {
-  font-family: 'DM Sans', monospace;
-  font-size: 10px;
-  opacity: 0.25;
-  letter-spacing: 0.3px;
-}
-
-.browser-url .ssl { color: #4ade80; opacity: 1; }
-.browser-url .no-ssl { color: #ef4444; opacity: 1; }
-
-.browser-body {
-  padding: 16px;
-  min-height: 200px;
-  position: relative;
-}
-
-/* Before: messy mockup layout */
-.mock-before .mock-nav {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 14px;
-}
-
-.mock-before .mock-nav .block {
-  height: 8px;
-  background: var(--fg);
-  border-radius: 2px;
-  opacity: 0.08;
-}
-
-.mock-before .mock-hero {
-  height: 48px;
-  background: var(--fg);
-  opacity: 0.05;
-  border-radius: 4px;
-  margin-bottom: 12px;
-}
-
-.mock-before .mock-content {
-  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 8px;
-}
-
-.mock-before .mock-content .block {
   flex: 1;
-  height: 64px;
-  background: var(--fg);
-  border-radius: 3px;
-  opacity: 0.04;
 }
 
-/* Before: visual "problems" */
-.mock-before .mock-nav .block:nth-child(1) { width: 80px; opacity: 0.12; }
-.mock-before .mock-nav .block:nth-child(2) { width: 40px; }
-.mock-before .mock-nav .block:nth-child(3) { width: 55px; }
-.mock-before .mock-content .block:nth-child(1) { flex: 2; opacity: 0.06; }
-.mock-before .mock-content .block:nth-child(2) { flex: 1; opacity: 0.03; }
-.mock-before .mock-banner {
-  height: 24px;
-  background: #ef4444;
-  opacity: 0.08;
-  border-radius: 3px;
-  margin-bottom: 10px;
-}
-.mock-before .mock-footer {
-  margin-top: 12px;
-  height: 20px;
-  background: var(--fg);
-  opacity: 0.03;
-  border-radius: 3px;
+.gauge {
+  width: 72px;
+  height: 72px;
 }
 
-/* After: clean mockup layout */
-.mock-after .mock-nav {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 14px;
+.gauge-bg {
+  fill: none;
+  stroke: var(--fg);
+  stroke-width: 5;
+  opacity: 0.06;
 }
 
-.mock-after .mock-nav .logo {
-  width: 12px;
-  height: 12px;
-  border-radius: 3px;
-  background: var(--fg);
-  opacity: 0.2;
+.gauge-fill {
+  fill: none;
+  stroke-width: 5;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.mock-after .mock-nav .links {
-  display: flex;
-  gap: 8px;
-  margin-left: auto;
+.gauge-fill.red { stroke: #ef4444; }
+.gauge-fill.orange { stroke: #f59e0b; }
+.gauge-fill.green { stroke: #22c55e; }
+
+.gauge-score {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  fill: var(--fg);
+  text-anchor: middle;
+  dominant-baseline: central;
 }
 
-.mock-after .mock-nav .links .block {
-  width: 28px;
-  height: 5px;
-  background: var(--fg);
-  opacity: 0.1;
-  border-radius: 2px;
+.gauge-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.35;
+  letter-spacing: 0.3px;
+  text-align: center;
+  white-space: nowrap;
 }
 
-.mock-after .mock-hero {
-  height: 52px;
-  background: linear-gradient(135deg, rgba(238,235,228,0.06) 0%, rgba(238,235,228,0.02) 100%);
-  border-radius: 6px;
-  margin-bottom: 12px;
-  border: 1px solid var(--fg-faint);
-  display: flex;
-  align-items: center;
-  padding: 0 14px;
-}
-
-.mock-after .mock-hero .block {
-  width: 60%;
-  height: 8px;
-  background: var(--fg);
-  opacity: 0.12;
-  border-radius: 2px;
-}
-
-.mock-after .mock-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-}
-
-.mock-after .mock-grid .card {
-  height: 52px;
-  background: rgba(238,235,228,0.03);
-  border: 1px solid var(--fg-faint);
-  border-radius: 5px;
-}
-
-.mock-after .mock-footer {
-  margin-top: 12px;
-  height: 16px;
-  background: var(--fg);
-  opacity: 0.03;
-  border-radius: 3px;
-}
-
-/* Metrics below browser */
-.compare-metrics {
+/* Extra metrics */
+.compare-extras {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--fg-faint);
 }
 
-.metric {
+.compare-extras .extra {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 13px;
   font-family: var(--font-display);
   font-weight: 500;
-  opacity: 0.7;
 }
 
-.metric-icon {
-  width: 20px;
-  height: 20px;
+.extra-icon {
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 11px;
   flex-shrink: 0;
+  line-height: 1;
 }
 
-.metric.bad .metric-icon {
-  background: rgba(239,68,68,0.12);
+.compare-before .extra { opacity: 0.5; }
+.compare-before .extra-icon {
+  background: rgba(239,68,68,0.1);
   color: #ef4444;
 }
 
-.metric.good .metric-icon {
-  background: rgba(74,222,128,0.12);
-  color: #4ade80;
+.compare-after .extra { opacity: 0.7; }
+.compare-after .extra-icon {
+  background: rgba(34,197,94,0.1);
+  color: #22c55e;
 }
-
-.metric-value {
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-
-.metric.bad .metric-value { color: #ef4444; }
-.metric.good .metric-value { color: #4ade80; }
 
 /* Arrow between cards */
 .compare-arrow {
@@ -716,7 +600,7 @@ section {
   opacity: 0.15;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .compare {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -727,9 +611,9 @@ section {
   .compare-arrow svg {
     transform: rotate(90deg);
   }
-  .mock-after .mock-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+  .gauge { width: 60px; height: 60px; }
+  .gauge-score { font-size: 18px; }
+  .compare-card { padding: 28px 24px; }
 }
 
 /* ─── PROCESS ─── */
