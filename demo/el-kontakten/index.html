@@ -97,26 +97,35 @@ nav.scrolled { padding: 14px 32px; background: rgba(12,18,34,0.95); }
   min-height: 100vh; display: flex; flex-direction: column;
   justify-content: center; padding: 140px 32px 100px;
   position: relative;
+  background: linear-gradient(135deg, rgba(12,18,34,0.92) 0%, rgba(12,18,34,0.75) 100%),
+              url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1920&q=80') center/cover no-repeat;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
+  background: linear-gradient(transparent, var(--bg));
+  pointer-events: none;
 }
 .hero-label {
   font-size: 11px; font-weight: 600; letter-spacing: 4px;
   text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
   opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
+  position: relative; z-index: 1;
 }
 .hero h1 {
   font-size: clamp(32px, 5.5vw, 60px); font-weight: 700;
   line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px;
-  max-width: 700px;
+  max-width: 700px; position: relative; z-index: 1;
   opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards;
 }
 .hero h1 span { color: var(--accent); }
 .hero-sub {
   font-size: 17px; font-weight: 300; opacity: 0.5; max-width: 520px;
-  line-height: 1.8; margin-bottom: 40px;
+  line-height: 1.8; margin-bottom: 40px; position: relative; z-index: 1;
   animation: fadeUp 0.8s ease 0.6s both;
 }
 .hero-cta {
   display: flex; gap: 16px; flex-wrap: wrap;
+  position: relative; z-index: 1;
   opacity: 0; animation: fadeUp 0.8s ease 0.8s forwards;
 }
 .btn-primary {
@@ -181,6 +190,27 @@ section { padding: var(--section-pad) 32px; }
 }
 .service-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.2px; }
 .service-card p { font-size: 14px; opacity: 0.45; line-height: 1.7; }
+
+/* ─── PHOTO BREAK ─── */
+.photo-break {
+  position: relative; height: clamp(280px, 40vw, 420px);
+  overflow: hidden; border-top: 1px solid var(--fg-faint);
+  border-bottom: 1px solid var(--fg-faint);
+}
+.photo-break img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.6);
+}
+.photo-break .photo-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, var(--bg) 0%, transparent 30%, transparent 70%, var(--bg) 100%);
+  pointer-events: none;
+}
+.photo-break .photo-text {
+  position: absolute; bottom: 40px; left: 40px;
+  font-size: 13px; font-weight: 500; letter-spacing: 3px;
+  text-transform: uppercase; opacity: 0.5;
+}
 
 /* ─── ABOUT ─── */
 .about-grid {
@@ -385,6 +415,13 @@ footer a:hover { opacity: 0.7; }
     </div>
   </div>
 </section>
+
+<!-- PHOTO BREAK -->
+<div class="photo-break">
+  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80" alt="Moderne hus med professionel belysning" loading="lazy" width="1600" height="900">
+  <div class="photo-overlay"></div>
+  <span class="photo-text">Kvalitet i hver detalje</span>
+</div>
 
 <!-- ABOUT -->
 <section id="om" style="border-top: 1px solid var(--fg-faint);">
