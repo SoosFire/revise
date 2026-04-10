@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://blankstate.dk/sitemap.xml
+Sitemap: https://revise.dk/sitemap.xml
