@@ -481,8 +481,8 @@ section {
   border-radius: 50%;
 }
 
-.compare-before .dot { background: #ef4444; }
-.compare-after .dot { background: #22c55e; }
+.compare-before .dot { background: #ff4e42; }
+.compare-after .dot { background: #0cce6b; }
 
 /* Lighthouse-style gauges */
 .gauges {
@@ -496,49 +496,73 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   flex: 1;
 }
 
-.gauge {
-  width: 72px;
-  height: 72px;
+.gauge-wrap {
+  position: relative;
+  width: 76px;
+  height: 76px;
 }
 
+.gauge {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Faint colored background tint inside circle */
+.gauge-tint {
+  fill: none;
+  stroke-width: 28;
+  opacity: 0.07;
+}
+
+.gauge-tint.red { stroke: #ff4e42; }
+.gauge-tint.orange { stroke: #ffa400; }
+.gauge-tint.green { stroke: #0cce6b; }
+
+/* Outer track (faint ring) */
 .gauge-bg {
   fill: none;
   stroke: var(--fg);
-  stroke-width: 5;
+  stroke-width: 4;
   opacity: 0.06;
 }
 
+/* Score arc */
 .gauge-fill {
   fill: none;
-  stroke-width: 5;
+  stroke-width: 4;
   stroke-linecap: round;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
   transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.gauge-fill.red { stroke: #ef4444; }
-.gauge-fill.orange { stroke: #f59e0b; }
-.gauge-fill.green { stroke: #22c55e; }
+.gauge-fill.red { stroke: #ff4e42; }
+.gauge-fill.orange { stroke: #ffa400; }
+.gauge-fill.green { stroke: #0cce6b; }
 
+/* Score number in center */
 .gauge-score {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 22px;
-  fill: var(--fg);
+  font-size: 24px;
   text-anchor: middle;
   dominant-baseline: central;
 }
+
+.gauge-score.red { fill: #ff4e42; }
+.gauge-score.orange { fill: #ffa400; }
+.gauge-score.green { fill: #0cce6b; }
 
 .gauge-label {
   font-family: var(--font-display);
   font-size: 11px;
   font-weight: 500;
-  opacity: 0.35;
+  opacity: 0.4;
   letter-spacing: 0.3px;
   text-align: center;
   white-space: nowrap;
@@ -576,14 +600,14 @@ section {
 
 .compare-before .extra { opacity: 0.5; }
 .compare-before .extra-icon {
-  background: rgba(239,68,68,0.1);
-  color: #ef4444;
+  background: rgba(255,78,66,0.1);
+  color: #ff4e42;
 }
 
 .compare-after .extra { opacity: 0.7; }
 .compare-after .extra-icon {
-  background: rgba(34,197,94,0.1);
-  color: #22c55e;
+  background: rgba(12,206,107,0.1);
+  color: #0cce6b;
 }
 
 /* Arrow between cards */
@@ -611,9 +635,10 @@ section {
   .compare-arrow svg {
     transform: rotate(90deg);
   }
-  .gauge { width: 60px; height: 60px; }
-  .gauge-score { font-size: 18px; }
-  .compare-card { padding: 28px 24px; }
+  .gauge-wrap { width: 62px; height: 62px; }
+  .gauge-score { font-size: 19px !important; }
+  .compare-card { padding: 28px 20px; }
+  .gauges { gap: 6px; }
 }
 
 /* ─── PROCESS ─── */
