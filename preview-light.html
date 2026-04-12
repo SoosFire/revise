@@ -21,6 +21,27 @@
 
   html { background: #f4f1ea !important; color: #1a1714 !important; }
 
+  /* Noise grain texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+
+  /* Subtle vignette gradient */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9997;
+    background: radial-gradient(ellipse at 15% 10%, rgba(26,23,20,0) 0%, rgba(26,23,20,0.04) 100%);
+  }
+
   /* Nav */
   nav { background: rgba(244,241,234,0.85) !important; border-bottom-color: rgba(26,23,20,0.08) !important; }
   nav.scrolled { background: rgba(244,241,234,0.95) !important; }
