@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Hansen VVS — Autoriseret VVS-installatør i Vejle med 25+ års erfaring. Akut service, badeværelser, varmepumper og kloakarbejde.">
+<title>Hansen VVS — Autoriseret VVS i Vejle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0b1320;
+    --surface: #111b2e;
+    --border: rgba(255,255,255,0.06);
+    --text: #e8e6e1;
+    --muted: rgba(232,230,225,0.45);
+    --accent: #3b82f6;
+    --accent-glow: rgba(59,130,246,0.12);
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Nav */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 18px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(11,19,32,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { font-size: 17px; font-weight: 700; letter-spacing: -0.3px; color: var(--text); text-decoration: none; }
+  .nav-brand span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 500; letter-spacing: 0.2px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--accent); color: #fff; border: none; padding: 9px 20px;
+    border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;
+    text-decoration: none; transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 120px 60px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1400&q=80') center/cover;
+    opacity: 0.12;
+  }
+  .hero-content { position: relative; max-width: 620px; }
+  .hero-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 56px); font-weight: 700; line-height: 1.1;
+    letter-spacing: -1.5px; margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero-desc {
+    font-size: 16px; line-height: 1.7; color: var(--muted); max-width: 480px; margin-bottom: 36px;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff; padding: 14px 28px;
+    border-radius: 10px; font-size: 14px; font-weight: 600;
+    text-decoration: none; transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-outline {
+    display: inline-flex; align-items: center;
+    background: transparent; color: var(--text); padding: 14px 28px;
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 10px;
+    font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color 0.2s;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.25); }
+
+  /* Trust strip */
+  .trust {
+    display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+    padding: 48px 40px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .trust-item { text-align: center; }
+  .trust-num { font-size: 28px; font-weight: 700; color: var(--accent); }
+  .trust-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* Services */
+  .services {
+    padding: 80px 60px;
+  }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: 32px; font-weight: 700; letter-spacing: -0.8px; margin-bottom: 48px;
+  }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .service-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .service-card:hover { border-color: rgba(59,130,246,0.2); background: rgba(59,130,246,0.03); }
+  .service-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--accent-glow); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px; font-size: 18px;
+  }
+  .service-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .service-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* CTA */
+  .cta-section {
+    padding: 80px 60px;
+    text-align: center;
+  }
+  .cta-section h2 { font-size: 32px; font-weight: 700; letter-spacing: -0.8px; margin-bottom: 16px; }
+  .cta-section p { font-size: 15px; color: var(--muted); margin-bottom: 32px; }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+  }
+  .footer-info { font-size: 12px; color: var(--muted); }
+  .footer-info a { color: var(--muted); text-decoration: none; }
+  .footer-info a:hover { color: var(--text); }
+  .footer-credit { font-size: 11px; color: rgba(232,230,225,0.25); }
+  .footer-credit a { color: var(--accent); text-decoration: none; opacity: 0.6; }
+
+  @media (max-width: 768px) {
+    .nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .services { padding: 60px 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .cta-section { padding: 60px 24px; }
+    .footer { padding: 30px 24px; flex-direction: column; text-align: center; }
+    .trust { gap: 24px; padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <a href="#" class="nav-brand">Hansen <span>VVS</span></a>
+  <div class="nav-links">
+    <a href="#ydelser">Ydelser</a>
+    <a href="#om">Om os</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+  <a href="tel:75823419" class="nav-cta">Ring 75 82 34 19</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Autoriseret VVS-installat&oslash;r i Vejle</div>
+    <h1>VVS-l&oslash;sninger du kan <em>stole p&aring;.</em></h1>
+    <p class="hero-desc">Fra akutte reparationer til komplette badeværelser. Vi har serviceret Vejle og omegn i over 25 &aring;r med kvalitet, pålidelighed og fair priser.</p>
+    <div class="hero-btns">
+      <a href="tel:75823419" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Ring 75 82 34 19
+      </a>
+      <a href="#ydelser" class="btn-outline">Se vores ydelser</a>
+    </div>
+  </div>
+</section>
+
+<!-- Trust -->
+<div class="trust">
+  <div class="trust-item"><div class="trust-num">25+</div><div class="trust-label">&aring;rs erfaring</div></div>
+  <div class="trust-item"><div class="trust-num">8</div><div class="trust-label">medarbejdere</div></div>
+  <div class="trust-item"><div class="trust-num">24/7</div><div class="trust-label">n&oslash;dservice</div></div>
+  <div class="trust-item"><div class="trust-num">100%</div><div class="trust-label">autoriseret</div></div>
+</div>
+
+<!-- Services -->
+<section class="services" id="ydelser">
+  <div class="section-label">Ydelser</div>
+  <h2 class="section-title">Alt inden for VVS</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">&#128167;</div>
+      <h3>VVS-installation</h3>
+      <p>Professionel installation af vand, varme og sanitet i nye og eksisterende bygninger.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#9888;&#65039;</div>
+      <h3>Akut service</h3>
+      <p>D&oslash;gn&aring;ben n&oslash;dservice n&aring;r uheldet er ude. Vi er fremme inden for 60 minutter.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128705;</div>
+      <h3>Badev&aelig;relse</h3>
+      <p>Komplet badeværelsesrenovering fra design til f&aelig;rdigt resultat. N&oslash;glef&aelig;rdige l&oslash;sninger.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#9728;&#65039;</div>
+      <h3>Varmepumper</h3>
+      <p>Installation og service af varmepumper. Spar op til 60% p&aring; din varmeregning.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128295;</div>
+      <h3>Kloakservice</h3>
+      <p>Sp&oslash;ling, tv-inspektion og reparation af kloakker og afløb.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128293;</div>
+      <h3>Gasinstallation</h3>
+      <p>Autoriseret gasinstallation og service af gasfyr og gaskomfurer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="kontakt">
+  <h2>Klar til at komme i gang?</h2>
+  <p>Ring til os eller send en besked — vi vender tilbage inden for 2 timer.</p>
+  <a href="tel:75823419" class="btn-primary" style="font-size:16px; padding:16px 36px;">Ring 75 82 34 19</a>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-info">
+    Hansen VVS &amp; Blikkenslager &nbsp;&middot;&nbsp; Horsensvej 42, 7100 Vejle &nbsp;&middot;&nbsp;
+    <a href="tel:75823419">75 82 34 19</a> &nbsp;&middot;&nbsp;
+    <a href="mailto:info@hansenvvs.dk">info@hansenvvs.dk</a> &nbsp;&middot;&nbsp;
+    CVR 12345678
+  </div>
+  <div class="footer-credit">Lavet af <a href="https://revise.dk">Revise</a></div>
+</footer>
+
+</body>
+</html>

@@ -464,6 +464,47 @@
   </div>
 </section>
 
+<!-- ─── WEBSITE SLIDER ─── -->
+<section>
+  <div class="reveal" style="text-align:center; margin-bottom: 48px;">
+    <p class="section-label">Se forskellen</p>
+    <h2 class="section-title">Samme virksomhed.<br>Helt nyt f&oslash;rsteindtryk.</h2>
+    <p class="section-desc">Tr&aelig;k i slideren og se transformationen fra en typisk h&aring;ndv&aelig;rker-hjemmeside til en professionel online tilstedev&aelig;relse.</p>
+  </div>
+
+  <div class="reveal">
+    <div class="slider-container" id="imageSlider">
+      <div class="slider-img slider-after">
+        <img src="assets/slide-efter.jpg" alt="Hjemmeside efter revision af Revise" draggable="false">
+        <span class="slider-badge slider-badge-after">Efter</span>
+      </div>
+      <div class="slider-img slider-before">
+        <img src="assets/slide-foer.jpg" alt="Typisk hjemmeside f&oslash;r revision" draggable="false">
+        <span class="slider-badge slider-badge-before">F&oslash;r</span>
+      </div>
+      <div class="slider-handle" id="sliderHandle">
+        <div class="slider-line"></div>
+        <div class="slider-grip">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M6 10L2 10M2 10L5 7M2 10L5 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 10L18 10M18 10L15 7M18 10L15 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="slider-line"></div>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:space-between; max-width:900px; margin:12px auto 0; padding:0 4px;">
+      <span style="font-size:12px; color:rgba(238,235,228,0.3); letter-spacing:0.5px;">hansenvvs.dk &mdash; f&oslash;r</span>
+      <span style="font-size:12px; color:rgba(238,235,228,0.3); letter-spacing:0.5px;">hansenvvs.dk &mdash; efter</span>
+    </div>
+  </div>
+
+  <div class="reveal" style="text-align:center; margin-top:40px;">
+    <a href="demo/foer/" class="section-more" style="margin-right:24px;">Se &ldquo;f&oslash;r&rdquo; live &rarr;</a>
+    <a href="demo/efter/" class="section-more">Se &ldquo;efter&rdquo; live &rarr;</a>
+  </div>
+</section>
+
 <!-- ─── CTA BAND ─── -->
 <section class="cta-section">
   <div class="reveal">
@@ -551,6 +592,47 @@
 
   const compareEl = document.getElementById('compareSection');
   if (compareEl) gaugeObs.observe(compareEl);
+
+  // ─── Before/After Image Slider ───
+  (function() {
+    const container = document.getElementById('imageSlider');
+    if (!container) return;
+
+    const before = container.querySelector('.slider-before');
+    const handle = container.querySelector('.slider-handle');
+    let dragging = false;
+
+    function setPosition(x) {
+      const rect = container.getBoundingClientRect();
+      let pct = ((x - rect.left) / rect.width) * 100;
+      pct = Math.max(2, Math.min(98, pct));
+      before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+      handle.style.left = pct + '%';
+    }
+
+    // Mouse
+    container.addEventListener('mousedown', function(e) {
+      e.preventDefault();
+      dragging = true;
+      setPosition(e.clientX);
+    });
+    window.addEventListener('mousemove', function(e) {
+      if (!dragging) return;
+      setPosition(e.clientX);
+    });
+    window.addEventListener('mouseup', function() { dragging = false; });
+
+    // Touch
+    container.addEventListener('touchstart', function(e) {
+      dragging = true;
+      setPosition(e.touches[0].clientX);
+    }, { passive: true });
+    window.addEventListener('touchmove', function(e) {
+      if (!dragging) return;
+      setPosition(e.touches[0].clientX);
+    }, { passive: true });
+    window.addEventListener('touchend', function() { dragging = false; });
+  })();
 </script>
 
 </body>
