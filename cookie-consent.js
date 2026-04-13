@@ -5,7 +5,7 @@
 
 (function() {
   // ── Config ──
-  var GA_ID = 'G-XXXXXXXXXX'; // TODO: Replace with your GA4 measurement ID
+  var GA_ID = 'G-YCFFR5K8J9';
 
   var STORAGE_KEY = 'revise_cookie_consent';
   var consent = localStorage.getItem(STORAGE_KEY);
