@@ -3,203 +3,319 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ydelser — Revise</title>
-<meta name="description" content="Webdesign, udvikling, SEO og hosting. Se alle vores ydelser og vælg den pakke der passer til dit projekt.">
-<link rel="canonical" href="https://revise.dk/ydelser.html">
-<meta property="og:title" content="Ydelser — Revise">
-<meta property="og:description" content="Webdesign, udvikling, SEO og hosting. Se alle vores ydelser og vaelg den pakke der passer til dit projekt.">
-<meta property="og:url" content="https://revise.dk/ydelser.html">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://revise.dk/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#f4f1ea">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><rect x='6' y='6' width='68' height='68' fill='%23ffffff' stroke='%231a1714' stroke-width='4' rx='5'/><polygon points='74,6 74,34 46,6' fill='%231a1714' opacity='0.25'/><line x1='46' y1='6' x2='74' y2='34' stroke='%231a1714' stroke-width='2.5' opacity='0.6'/></svg>">
+<title>Ydelser &mdash; Revise | Webdesign, udvikling &amp; SEO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#f5f5f7;
+  --bg-white:#fff;
+  --bg-subtle:#eeeef0;
+  --border:rgba(0,0,0,.06);
+  --text:#1d1d1f;
+  --text-mid:#6e6e73;
+  --text-light:#86868b;
+  --serif:'Source Serif 4',Georgia,serif;
+  --sans:'DM Sans',-apple-system,sans-serif;
+  --max:1080px;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;padding:0 clamp(20px,4vw,48px);transition:all .3s}
+.nav.scrolled{background:rgba(245,245,247,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:var(--max);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-.5px}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;color:var(--text-mid);text-decoration:none;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--text);color:var(--bg);padding:8px 20px;border-radius:100px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s}
+.nav-cta:hover{opacity:.8}
+
+/* ── HERO ── */
+.hero{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px clamp(20px,4vw,48px) 100px;position:relative;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 100%)}
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:60%;height:70%;background:radial-gradient(ellipse,rgba(74,143,133,.06),transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:-10%;width:50%;height:60%;background:radial-gradient(ellipse,rgba(120,100,180,.04),transparent 70%);pointer-events:none}
+.hero-label{font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);margin-bottom:24px}
+.hero h1{font-family:var(--serif);font-size:clamp(40px,6vw,72px);font-weight:700;line-height:1.08;letter-spacing:-2px;margin-bottom:20px;max-width:700px}
+.hero-desc{font-size:18px;color:var(--text-mid);line-height:1.7;margin-bottom:40px;max-width:520px;font-weight:300}
+
+/* ── SECTION HELPERS ── */
+.s-pad{padding:clamp(80px,10vw,120px) clamp(20px,4vw,48px)}
+.s-inner{max-width:var(--max);margin:0 auto}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:16px}
+.s-h2{font-family:var(--serif);font-size:clamp(32px,4vw,52px);font-weight:700;letter-spacing:-1px;line-height:1.1;margin-bottom:20px}
+.s-desc{font-size:16px;line-height:1.8;color:var(--text-mid);max-width:480px;font-weight:300}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:600;text-decoration:none;transition:all .25s}
+.btn-dark{background:var(--text);color:var(--bg-white)}
+.btn-dark:hover{opacity:.85;transform:translateY(-1px)}
+
+/* ── SERVICES ── */
+.services{background:var(--bg-white)}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:48px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.srv-card{background:var(--bg-white);padding:40px 32px}
+.srv-num{font-family:var(--serif);font-size:13px;font-weight:600;color:var(--text-light);margin-bottom:20px}
+.srv-card h3{font-size:20px;font-weight:700;margin-bottom:10px;letter-spacing:-.3px}
+.srv-card p{font-size:14px;color:var(--text-mid);line-height:1.7}
+
+/* ── PROCESS ── */
+.process{background:var(--bg)}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px}
+.process-card{background:var(--bg-white);border-radius:20px;padding:36px 28px;box-shadow:0 2px 8px rgba(0,0,0,.03)}
+.process-step{font-family:var(--serif);font-size:40px;font-weight:700;color:var(--bg-subtle);line-height:1;margin-bottom:20px;letter-spacing:-1px}
+.process-card h3{font-size:17px;font-weight:700;margin-bottom:10px;letter-spacing:-.2px}
+.process-card p{font-size:14px;color:var(--text-mid);line-height:1.7}
+
+/* ── PRICING ── */
+.pricing{background:var(--bg-white)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.pricing-card{background:var(--bg-white);border-radius:20px;padding:40px 32px;border:1px solid var(--border);display:flex;flex-direction:column}
+.pricing-card.featured{border:2px solid rgba(74,143,133,.3);box-shadow:0 4px 24px rgba(74,143,133,.08);position:relative}
+.pricing-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#4a8f85;color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 16px;border-radius:100px;white-space:nowrap}
+.pricing-name{font-size:14px;font-weight:600;letter-spacing:-.1px;margin-bottom:8px;color:var(--text)}
+.pricing-price{font-family:var(--serif);font-size:clamp(28px,3vw,36px);font-weight:700;letter-spacing:-1px;line-height:1;margin-bottom:4px;color:var(--text)}
+.pricing-period{font-size:13px;color:var(--text-light);margin-bottom:20px;font-weight:400}
+.pricing-desc{font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--border)}
+.pricing-features{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px;flex-grow:1}
+.pricing-features li{font-size:13.5px;color:var(--text-mid);display:flex;align-items:center;gap:10px;line-height:1.5}
+.pricing-features li::before{content:'\2713';color:#4a8f85;font-weight:700;font-size:13px;flex-shrink:0}
+.pricing-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:600;text-decoration:none;transition:all .25s;text-align:center;width:100%}
+.pricing-btn-outline{background:transparent;color:var(--text);border:1.5px solid rgba(0,0,0,.15)}
+.pricing-btn-outline:hover{border-color:var(--text)}
+.pricing-btn-filled{background:var(--text);color:var(--bg-white);border:1.5px solid var(--text)}
+.pricing-btn-filled:hover{opacity:.85;transform:translateY(-1px)}
+
+/* ── CTA ── */
+.cta{background:var(--text);color:var(--bg-white);text-align:center;border-radius:24px;margin:0 clamp(20px,4vw,48px);padding:clamp(60px,8vw,100px) clamp(20px,4vw,48px)}
+.cta-wrap{margin-bottom:clamp(60px,8vw,100px)}
+.cta .s-h2{color:var(--bg-white)}
+.cta .s-desc{color:rgba(255,255,255,.45);margin:0 auto 40px}
+.btn-white{background:var(--bg-white);color:var(--text);padding:16px 36px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .25s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+
+/* ── FOOTER ── */
+.footer{padding:32px clamp(20px,4vw,48px)}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-left{font-size:12px;color:var(--text-light)}
+.footer-right{display:flex;gap:24px}
+.footer-right a{font-size:12px;color:var(--text-light);text-decoration:none;transition:color .2s}
+.footer-right a:hover{color:var(--text)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .pricing-grid{grid-template-columns:1fr}
+  .pricing-card.featured{order:-1}
+  .process-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .srv-grid,.process-grid{grid-template-columns:1fr}
+  .hero h1{letter-spacing:-1px}
+  .cta{margin:0 12px;border-radius:20px}
+  .pricing-grid{grid-template-columns:1fr}
+}
+
+/* ── REVEAL ── */
+.r{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.25,.1,.25,1),transform .8s cubic-bezier(.25,.1,.25,1)}
+.r.v{opacity:1;transform:none}
+.r-d1{transition-delay:.1s}
+.r-d2{transition-delay:.2s}
+.r-d3{transition-delay:.3s}
+</style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">
-    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="6" width="68" height="68" fill="none" stroke="#1a1714" stroke-width="2.8" rx="5"/>
-      <polygon points="74,6 74,34 46,6" fill="#1a1714" opacity="0.18"/>
-      <line x1="46" y1="6" x2="74" y2="34" stroke="#1a1714" stroke-width="2" opacity="0.45"/>
-    </svg>
-    <span>revise</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Forside</a></li>
-    <li><a href="ydelser.html" class="current">Ydelser</a></li>
-    <li><a href="loesninger.html">L&oslash;sninger</a></li>
-    <li><a href="om.html">Om os</a></li>
-  </ul>
-  <a href="kontakt.html" class="nav-cta">Kontakt os</a>
-  <button class="mobile-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">revise</a>
+    <ul class="nav-links">
+      <li><a href="ydelser.html">Ydelser</a></li>
+      <li><a href="loesninger.html">L&oslash;sninger</a></li>
+      <li><a href="om.html">Om os</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Start dit projekt</a>
+  </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" onclick="closeMenu()">Forside</a>
-  <a href="ydelser.html" onclick="closeMenu()">Ydelser</a>
-  <a href="loesninger.html" onclick="closeMenu()">L&oslash;sninger</a>
-  <a href="om.html" onclick="closeMenu()">Om os</a>
-  <a href="kontakt.html" class="mobile-cta" onclick="closeMenu()">Kontakt os</a>
-</div>
 
-<main>
-<!-- Page Head -->
-<section class="page-head">
-  <div class="reveal">
-    <p class="section-label">Ydelser</p>
-    <h1 class="section-title">Alt du har brug for.<br>Intet du ikke har.</h1>
-    <p class="section-desc">Vi tilbyder en komplet pakke fra design til deployment — altid med fokus på kvalitet, hastighed og dit brands identitet.</p>
-  </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label r">Ydelser</div>
+  <h1 class="r r-d1">Alt du har brug for.<br>Intet du ikke har.</h1>
+  <p class="hero-desc r r-d2">Vi tilbyder en komplet pakke fra design til deployment &mdash; altid med fokus p&aring; kvalitet, hastighed og dit brands identitet.</p>
 </section>
 
-<!-- Services Grid -->
-<section class="services-section">
-  <div class="services-grid reveal">
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 40 40"><rect x="2" y="2" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" rx="4"/><line x1="2" y1="12" x2="38" y2="12" stroke="currentColor" stroke-width="1"/><rect x="8" y="18" width="12" height="8" fill="none" stroke="currentColor" stroke-width="1" rx="1"/></svg>
-      <h3>Webdesign</h3>
-      <p>Skr&aelig;ddersyede designs der reflekterer dit brand. Ingen templates — alt bygges fra bunden med din vision i centrum.</p>
-    </div>
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 40 40"><polyline points="12,14 4,22 12,30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><polyline points="28,14 36,22 28,30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="22" y1="10" x2="18" y2="34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      <h3>Udvikling</h3>
-      <p>Clean code, hurtige load-tider, og responsivt design. Vi bygger med moderne teknologier der skalerer med din forretning.</p>
-    </div>
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M20,4 A16,16 0 0,1 36,20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="20" cy="20" r="3" fill="currentColor" opacity="0.4"/></svg>
-      <h3>SEO &amp; Performance</h3>
-      <p>Optimeret til s&oslash;gemaskiner fra dag &eacute;t. Vi s&oslash;rger for at din side er hurtig, tilg&aelig;ngelig og synlig i s&oslash;geresultaterne.</p>
-    </div>
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 40 40"><rect x="8" y="2" width="24" height="36" fill="none" stroke="currentColor" stroke-width="1.5" rx="4"/><line x1="16" y1="32" x2="24" y2="32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      <h3>Responsivt Design</h3>
-      <p>Din side ser perfekt ud p&aring; alle enheder — desktop, tablet og mobil. Ingen kompromiser p&aring; brugeroplevelsen.</p>
-    </div>
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 40 40"><path d="M20,4 L36,14 L36,28 L20,38 L4,28 L4,14 Z" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="20" y1="4" x2="20" y2="38" stroke="currentColor" stroke-width="1" opacity="0.3"/><line x1="4" y1="14" x2="36" y2="14" stroke="currentColor" stroke-width="1" opacity="0.3"/></svg>
-      <h3>Hosting &amp; Drift</h3>
-      <p>Vi tager os af den tekniske drift, s&aring; du kan fokusere p&aring; din forretning. Sikker, hurtig og p&aring;lidelig hosting.</p>
-    </div>
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 40 40"><path d="M8,32 L16,18 L22,26 L28,12 L34,20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="4" y1="36" x2="36" y2="36" stroke="currentColor" stroke-width="1" opacity="0.3"/></svg>
-      <h3>Vedligeholdelse</h3>
-      <p>L&oslash;bende opdateringer, sikkerhedspatches og indholds&aelig;ndringer. Vi holder din side frisk og sikker over tid.</p>
+<!-- SERVICES -->
+<section class="services s-pad" id="ydelser">
+  <div class="s-inner">
+    <div class="eyebrow r">Hvad vi tilbyder</div>
+    <h2 class="s-h2 r">Kompetencer der<br>driver resultater.</h2>
+    <p class="s-desc r">Fra f&oslash;rste skitse til f&aelig;rdig l&oslash;sning &mdash; vi d&aelig;kker hele rejsen.</p>
+    <div class="srv-grid r">
+      <div class="srv-card">
+        <div class="srv-num">01</div>
+        <h3>Webdesign</h3>
+        <p>Skr&aelig;ddersyede designs der reflekterer dit brand. Ingen templates &mdash; alt bygges fra bunden med din vision i centrum.</p>
+      </div>
+      <div class="srv-card">
+        <div class="srv-num">02</div>
+        <h3>Udvikling</h3>
+        <p>Clean code, hurtige load-tider, og responsivt design. Vi bygger med moderne teknologier der skalerer med din forretning.</p>
+      </div>
+      <div class="srv-card">
+        <div class="srv-num">03</div>
+        <h3>SEO &amp; Performance</h3>
+        <p>Optimeret til s&oslash;gemaskiner fra dag &eacute;t. Vi s&oslash;rger for at din side er hurtig, tilg&aelig;ngelig og synlig i s&oslash;geresultaterne.</p>
+      </div>
+      <div class="srv-card">
+        <div class="srv-num">04</div>
+        <h3>Responsivt Design</h3>
+        <p>Din side ser perfekt ud p&aring; alle enheder &mdash; desktop, tablet og mobil. Ingen kompromiser p&aring; brugeroplevelsen.</p>
+      </div>
+      <div class="srv-card">
+        <div class="srv-num">05</div>
+        <h3>Hosting &amp; Drift</h3>
+        <p>Vi tager os af den tekniske drift, s&aring; du kan fokusere p&aring; din forretning. Sikker, hurtig og p&aring;lidelig hosting.</p>
+      </div>
+      <div class="srv-card">
+        <div class="srv-num">06</div>
+        <h3>Vedligeholdelse</h3>
+        <p>L&oslash;bende opdateringer, sikkerhedspatches og indholds&aelig;ndringer. Vi holder din side frisk og sikker over tid.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Process -->
-<section class="process-section">
-  <div class="reveal">
-    <p class="section-label">Process</p>
-    <h2 class="section-title">Fra id&eacute; til launch<br>i fire trin.</h2>
-    <p class="section-desc">Vores proces er transparent og struktureret — du ved altid pr&aelig;cis hvor vi er, og hvad der sker n&aelig;st.</p>
-  </div>
-  <div class="process-steps reveal">
-    <div class="process-step">
-      <h3>Forst&aring;</h3>
-      <p>Vi l&aelig;rer din forretning at kende. M&aring;lgruppe, konkurrenter, m&aring;l — alt der former den rigtige l&oslash;sning.</p>
-    </div>
-    <div class="process-step">
-      <h3>Forme</h3>
-      <p>Wireframes og visuelle koncepter. Du ser og godkender designet f&oslash;r en eneste linje kode bliver skrevet.</p>
-    </div>
-    <div class="process-step">
-      <h3>Bygge</h3>
-      <p>Vi bygger din side med clean code, hurtige load-tider og responsivt design p&aring; tv&aelig;rs af alle enheder.</p>
-    </div>
-    <div class="process-step">
-      <h3>Levere</h3>
-      <p>Test, lancering og overdragelse. Vi s&oslash;rger for en smooth launch og st&aring;r klar til support bagefter.</p>
+<!-- PROCESS -->
+<section class="process s-pad" id="proces">
+  <div class="s-inner">
+    <div class="eyebrow r">S&aring;dan arbejder vi</div>
+    <h2 class="s-h2 r">Fire trin til<br>din nye hjemmeside.</h2>
+    <p class="s-desc r">En struktureret proces der sikrer kvalitet i hvert eneste skridt.</p>
+    <div class="process-grid">
+      <div class="process-card r">
+        <div class="process-step">01</div>
+        <h3>Forst&aring;</h3>
+        <p>Vi l&aelig;rer din forretning at kende. M&aring;lgruppe, konkurrenter, m&aring;l &mdash; alt der former den rigtige l&oslash;sning.</p>
+      </div>
+      <div class="process-card r r-d1">
+        <div class="process-step">02</div>
+        <h3>Forme</h3>
+        <p>Wireframes og visuelle koncepter. Du ser og godkender designet f&oslash;r en eneste linje kode bliver skrevet.</p>
+      </div>
+      <div class="process-card r r-d2">
+        <div class="process-step">03</div>
+        <h3>Bygge</h3>
+        <p>Vi bygger din side med clean code, hurtige load-tider og responsivt design p&aring; tv&aelig;rs af alle enheder.</p>
+      </div>
+      <div class="process-card r r-d3">
+        <div class="process-step">04</div>
+        <h3>Levere</h3>
+        <p>Test, lancering og overdragelse. Vi s&oslash;rger for en smooth launch og st&aring;r klar til support bagefter.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Pricing -->
-<section class="pricing-section">
-  <div class="reveal">
-    <p class="section-label">Priser</p>
-    <h2 class="section-title">Enkel priss&aelig;tning.<br>Ingen skjulte gebyrer.</h2>
-    <p class="section-desc">V&aelig;lg den pakke der passer til dit projekt. Alle priser er eks. moms.</p>
-  </div>
-  <div class="pricing-grid reveal">
-    <div class="pricing-card">
-      <h3>Basis</h3>
-      <p class="pricing-price">Fra 8.995 kr.</p>
-      <p class="pricing-desc">Perfekt til sm&aring; virksomheder der har brug for en professionel online tilstedev&aelig;relse.</p>
-      <ul class="pricing-features">
-        <li>Op til 5 sider</li>
-        <li>Responsivt design</li>
-        <li>Kontaktformular</li>
-        <li>Basis SEO</li>
-        <li>1 m&aring;neds support</li>
-      </ul>
-      <a href="kontakt.html" class="pricing-cta">Kom i gang</a>
-    </div>
-    <div class="pricing-card featured">
-      <h3>Standard</h3>
-      <p class="pricing-price">Fra 17.995 kr.</p>
-      <p class="pricing-desc">Til virksomheder der vil skille sig ud med et unikt design og avanceret funktionalitet.</p>
-      <ul class="pricing-features">
-        <li>Op til 12 sider</li>
-        <li>Custom design</li>
-        <li>CMS integration</li>
-        <li>Avanceret SEO</li>
-        <li>Performance optimering</li>
-        <li>3 m&aring;neders support</li>
-      </ul>
-      <a href="kontakt.html" class="pricing-cta">Kom i gang</a>
-    </div>
-    <div class="pricing-card">
-      <h3>Premium</h3>
-      <p class="pricing-price">Fra 34.995 kr.</p>
-      <p class="pricing-desc">Den komplette l&oslash;sning til virksomheder med store ambitioner og komplekse behov.</p>
-      <ul class="pricing-features">
-        <li>Ubegr&aelig;nset sider</li>
-        <li>Skr&aelig;ddersyet design</li>
-        <li>E-commerce / webapp</li>
-        <li>API integrationer</li>
-        <li>Hosting &amp; drift</li>
-        <li>12 m&aring;neders support</li>
-      </ul>
-      <a href="kontakt.html" class="pricing-cta">Kom i gang</a>
+<!-- PRICING -->
+<section class="pricing s-pad" id="priser">
+  <div class="s-inner">
+    <div class="eyebrow r">Priser</div>
+    <h2 class="s-h2 r">Gennemsigtige priser.<br>Ingen overraskelser.</h2>
+    <p class="s-desc r">V&aelig;lg den pakke der passer til din virksomhed &mdash; eller kontakt os for en skr&aelig;ddersyet l&oslash;sning.</p>
+    <div class="pricing-grid">
+
+      <!-- Basis -->
+      <div class="pricing-card r">
+        <div class="pricing-name">Basis</div>
+        <div class="pricing-price">Fra 8.995 kr.</div>
+        <div class="pricing-period">Engangsbetaling</div>
+        <p class="pricing-desc">Perfekt til sm&aring; virksomheder der har brug for en professionel online tilstedev&aelig;relse.</p>
+        <ul class="pricing-features">
+          <li>Op til 5 sider</li>
+          <li>Responsivt design</li>
+          <li>Kontaktformular</li>
+          <li>Basis SEO</li>
+          <li>1 m&aring;neds support</li>
+        </ul>
+        <a href="kontakt.html" class="pricing-btn pricing-btn-outline">Kom i gang &rarr;</a>
+      </div>
+
+      <!-- Standard (featured) -->
+      <div class="pricing-card featured r r-d1">
+        <div class="pricing-badge">Mest popul&aelig;r</div>
+        <div class="pricing-name">Standard</div>
+        <div class="pricing-price">Fra 17.995 kr.</div>
+        <div class="pricing-period">Engangsbetaling</div>
+        <p class="pricing-desc">Til virksomheder der vil skille sig ud med et unikt design og avanceret funktionalitet.</p>
+        <ul class="pricing-features">
+          <li>Op til 12 sider</li>
+          <li>Custom design</li>
+          <li>CMS integration</li>
+          <li>Avanceret SEO</li>
+          <li>Performance optimering</li>
+          <li>3 m&aring;neders support</li>
+        </ul>
+        <a href="kontakt.html" class="pricing-btn pricing-btn-filled">Kom i gang &rarr;</a>
+      </div>
+
+      <!-- Premium -->
+      <div class="pricing-card r r-d2">
+        <div class="pricing-name">Premium</div>
+        <div class="pricing-price">Fra 34.995 kr.</div>
+        <div class="pricing-period">Engangsbetaling</div>
+        <p class="pricing-desc">Den komplette l&oslash;sning til virksomheder med store ambitioner og komplekse behov.</p>
+        <ul class="pricing-features">
+          <li>Ubegr&aelig;nset sider</li>
+          <li>Skr&aelig;ddersyet design</li>
+          <li>E-commerce / webapp</li>
+          <li>API integrationer</li>
+          <li>Hosting &amp; drift</li>
+          <li>12 m&aring;neders support</li>
+        </ul>
+        <a href="kontakt.html" class="pricing-btn pricing-btn-outline">Kom i gang &rarr;</a>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section">
-  <div class="reveal">
-    <p class="section-label">Kontakt</p>
-    <h2 class="section-title">Klar til at komme i gang?</h2>
-    <p class="section-desc">Fort&aelig;l os om dit projekt — vi vender tilbage inden for 24 timer.</p>
-    <a href="kontakt.html" class="btn-primary">Kontakt os</a>
-  </div>
+<div class="cta-wrap">
+<section class="cta">
+  <div class="eyebrow r" style="color:rgba(255,255,255,.3)">Kontakt</div>
+  <h2 class="s-h2 r">Klar til at komme i gang?</h2>
+  <p class="s-desc r" style="color:rgba(255,255,255,.45);margin:0 auto 40px">Fort&aelig;l os om dit projekt &mdash; vi vender tilbage inden for 24 timer med en plan og et tilbud.</p>
+  <a href="kontakt.html" class="btn-white r">Kontakt os &rarr;</a>
 </section>
+</div>
 
-</main>
-
-<footer>
-  <div class="footer-left">
-    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="6" width="68" height="68" fill="none" stroke="#1a1714" stroke-width="2.4" rx="4"/>
-      <polygon points="74,6 74,34 46,6" fill="#1a1714" opacity="0.18"/>
-      <line x1="46" y1="6" x2="74" y2="34" stroke="#1a1714" stroke-width="1.8" opacity="0.45"/>
-    </svg>
-    <span>&copy; 2026 Revise. Alle rettigheder forbeholdes.</span>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">&copy; 2026 Revise. Alle rettigheder forbeholdes.</div>
+    <div class="footer-right">
+      <a href="mailto:kontakt@revise.dk">kontakt@revise.dk</a>
+      <a href="tel:+4523907290">+45 23 90 72 90</a>
+    </div>
   </div>
-  <ul class="footer-links">
-    <li><a href="mailto:kontakt@revise.dk">kontakt@revise.dk</a></li>
-    <li><a href="tel:+4523907290">+45 23 90 72 90</a></li>
-  </ul>
 </footer>
 
-<script src="app.js" defer></script>
-<script src="cookie-consent.js" defer></script>
+<script>
+// Nav blur on scroll
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40)});
+
+// Reveal on scroll
+var ro=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');ro.unobserve(e.target)}});
+},{threshold:.08,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.r').forEach(function(el){ro.observe(el)});
+</script>
 </body>
 </html>

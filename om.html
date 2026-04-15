@@ -3,165 +3,218 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Om os — Revise</title>
-<meta name="description" content="Revise er et bureau for digital design og udvikling. Vi kombinerer strategisk tænkning med teknisk ekspertise.">
-<link rel="canonical" href="https://revise.dk/om.html">
-<meta property="og:title" content="Om os — Revise">
-<meta property="og:description" content="Revise er et bureau for digital design og udvikling.">
-<meta property="og:url" content="https://revise.dk/om.html">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://revise.dk/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#f4f1ea">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><rect x='6' y='6' width='68' height='68' fill='%23ffffff' stroke='%231a1714' stroke-width='4' rx='5'/><polygon points='74,6 74,34 46,6' fill='%231a1714' opacity='0.25'/><line x1='46' y1='6' x2='74' y2='34' stroke='%231a1714' stroke-width='2.5' opacity='0.6'/></svg>">
+<title>Om os &mdash; Revise</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-.values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-.value-item h3 { font-family: var(--font-display); font-weight: 600; font-size: 20px; margin-bottom: 10px; letter-spacing: -0.3px; }
-.value-item p { font-size: 15px; opacity: 0.4; line-height: 1.8; }
-@media (max-width: 768px) { .values-grid { grid-template-columns: 1fr; gap: 36px; } }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#f5f5f7;
+  --bg-white:#fff;
+  --bg-subtle:#eeeef0;
+  --border:rgba(0,0,0,.06);
+  --text:#1d1d1f;
+  --text-mid:#6e6e73;
+  --text-light:#86868b;
+  --serif:'Source Serif 4',Georgia,serif;
+  --sans:'DM Sans',-apple-system,sans-serif;
+  --max:1080px;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;padding:0 clamp(20px,4vw,48px);transition:all .3s}
+.nav.scrolled{background:rgba(245,245,247,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:var(--max);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-.5px}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;color:var(--text-mid);text-decoration:none;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--text)}
+.nav-cta{background:var(--text);color:var(--bg);padding:8px 20px;border-radius:100px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s}
+.nav-cta:hover{opacity:.8}
+
+/* ── HERO ── */
+.hero{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:160px clamp(20px,4vw,48px) 100px;position:relative;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 100%)}
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:60%;height:70%;background:radial-gradient(ellipse,rgba(74,143,133,.06),transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:-10%;width:50%;height:60%;background:radial-gradient(ellipse,rgba(120,100,180,.04),transparent 70%);pointer-events:none}
+.hero-label{font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);margin-bottom:24px}
+.hero h1{font-family:var(--serif);font-size:clamp(40px,6vw,72px);font-weight:700;line-height:1.08;letter-spacing:-2px;margin-bottom:20px;max-width:700px}
+.hero-desc{font-size:18px;color:var(--text-mid);line-height:1.7;margin-bottom:0;max-width:520px;font-weight:300}
+
+/* ── SECTION HELPERS ── */
+.s-pad{padding:clamp(80px,10vw,120px) clamp(20px,4vw,48px)}
+.s-inner{max-width:var(--max);margin:0 auto}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:16px}
+.s-h2{font-family:var(--serif);font-size:clamp(32px,4vw,52px);font-weight:700;letter-spacing:-1px;line-height:1.1;margin-bottom:20px}
+.s-desc{font-size:16px;line-height:1.8;color:var(--text-mid);max-width:480px;font-weight:300}
+
+/* ── ABOUT TWO-COLUMN ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:48px;align-items:start}
+.about-text p{font-size:16px;line-height:1.8;color:var(--text-mid);font-weight:300;margin-bottom:24px}
+.about-text p:last-child{margin-bottom:0}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.about-stat{background:var(--bg-white);border-radius:20px;padding:32px 24px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.03)}
+.about-stat-num{font-family:var(--serif);font-size:clamp(36px,4vw,52px);font-weight:700;color:var(--text);line-height:1;letter-spacing:-1px}
+.about-stat-label{font-size:13px;color:var(--text-light);margin-top:8px;font-weight:400}
+
+/* ── VALUES ── */
+.values{background:var(--bg-white)}
+.values-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.value-card{background:var(--bg-white);border-radius:20px;padding:36px 28px;box-shadow:0 2px 8px rgba(0,0,0,.03);border:1px solid var(--border)}
+.value-card h3{font-size:18px;font-weight:700;margin-bottom:10px;letter-spacing:-.2px}
+.value-card p{font-size:14px;color:var(--text-mid);line-height:1.7}
+
+/* ── CTA ── */
+.cta{background:var(--text);color:var(--bg-white);text-align:center;border-radius:24px;margin:0 clamp(20px,4vw,48px);padding:clamp(60px,8vw,100px) clamp(20px,4vw,48px)}
+.cta-wrap{margin-bottom:clamp(60px,8vw,100px)}
+.cta .s-h2{color:var(--bg-white)}
+.cta .s-desc{color:rgba(255,255,255,.45);margin:0 auto 40px}
+.btn-white{background:var(--bg-white);color:var(--text);padding:16px 36px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .25s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+
+/* ── FOOTER ── */
+.footer{padding:32px clamp(20px,4vw,48px)}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-left{font-size:12px;color:var(--text-light)}
+.footer-right{display:flex;gap:24px}
+.footer-right a{font-size:12px;color:var(--text-light);text-decoration:none;transition:color .2s}
+.footer-right a:hover{color:var(--text)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .about-stats{grid-template-columns:1fr 1fr}
+  .values-grid{grid-template-columns:1fr}
+  .hero h1{letter-spacing:-1px}
+  .cta{margin:0 12px;border-radius:20px}
+}
+
+/* ── REVEAL ── */
+.r{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.25,.1,.25,1),transform .8s cubic-bezier(.25,.1,.25,1)}
+.r.v{opacity:1;transform:none}
+.r-d1{transition-delay:.1s}
+.r-d2{transition-delay:.2s}
+.r-d3{transition-delay:.3s}
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">
-    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="6" width="68" height="68" fill="none" stroke="#1a1714" stroke-width="2.8" rx="5"/>
-      <polygon points="74,6 74,34 46,6" fill="#1a1714" opacity="0.18"/>
-      <line x1="46" y1="6" x2="74" y2="34" stroke="#1a1714" stroke-width="2" opacity="0.45"/>
-    </svg>
-    <span>revise</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Forside</a></li>
-    <li><a href="ydelser.html">Ydelser</a></li>
-    <li><a href="loesninger.html">L&oslash;sninger</a></li>
-    <li><a href="om.html" class="current">Om os</a></li>
-  </ul>
-  <a href="kontakt.html" class="nav-cta">Kontakt os</a>
-  <button class="mobile-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">revise</a>
+    <ul class="nav-links">
+      <li><a href="ydelser.html">Ydelser</a></li>
+      <li><a href="loesninger.html">L&oslash;sninger</a></li>
+      <li><a href="om.html" class="active">Om os</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Start dit projekt</a>
+  </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" onclick="closeMenu()">Forside</a>
-  <a href="ydelser.html" onclick="closeMenu()">Ydelser</a>
-  <a href="loesninger.html" onclick="closeMenu()">L&oslash;sninger</a>
-  <a href="om.html" onclick="closeMenu()">Om os</a>
-  <a href="kontakt.html" class="mobile-cta" onclick="closeMenu()">Kontakt os</a>
-</div>
 
-<main>
-<!-- Page Head -->
-<section class="page-head" style="border-top: none;">
-  <div class="reveal">
-    <p class="section-label">Om os</p>
-    <h1 class="section-title">Strategi, design<br>og teknologi.</h1>
-    <p class="section-desc">Vi bygger digitale produkter der performer — p&aring; tv&aelig;rs af brancher og markeder.</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label r">Om os</div>
+  <h1 class="r r-d1">Strategi, design<br>og teknologi.</h1>
+  <p class="hero-desc r r-d2">Vi bygger digitale produkter der performer &mdash; p&aring; tv&aelig;rs af brancher og markeder.</p>
+</section>
+
+<!-- ABOUT -->
+<section class="s-pad" style="background:var(--bg-white)">
+  <div class="s-inner">
+    <div class="eyebrow r">Hvem vi er</div>
+    <h2 class="s-h2 r">Mere end et bureau.</h2>
+    <div class="about-grid">
+      <div class="about-text r">
+        <p>Revise er et bureau for digital design og udvikling. Vi kombinerer strategisk t&aelig;nkning med teknisk ekspertise for at skabe digitale l&oslash;sninger der performer &mdash; p&aring; tv&aelig;rs af brancher og markeder.</p>
+        <p>Vi arbejder med virksomheder der forventer mere end en standardleverance. Hvert projekt f&aring;r personlig opm&aelig;rksomhed fra start til slut &mdash; vi forst&aring;r forretningen bag interfacet.</p>
+        <p>Vores tilgang er kompromisl&oslash;s. Vi v&aelig;lger den rigtige teknologi til hvert projekt, designer fra bunden, og f&oslash;lger op l&aelig;nge efter launch.</p>
+      </div>
+      <div class="about-stats r r-d1">
+        <div class="about-stat">
+          <div class="about-stat-num">100%</div>
+          <div class="about-stat-label">Skr&aelig;ddersyet</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">0</div>
+          <div class="about-stat-label">Templates brugt</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">24h</div>
+          <div class="about-stat-label">Responstid</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">&infin;</div>
+          <div class="about-stat-label">Ambitioner</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- About Content -->
-<section>
-  <div class="about-content reveal">
-    <div class="about-text">
-      <p>Revise er et bureau for digital design og udvikling. Vi kombinerer strategisk t&aelig;nkning med teknisk ekspertise for at skabe digitale l&oslash;sninger der performer — p&aring; tv&aelig;rs af brancher og markeder.</p>
-      <p>Vi arbejder med virksomheder der forventer mere end en standardleverance. Hvert projekt f&aring;r personlig opm&aelig;rksomhed fra start til slut — vi forst&aring;r forretningen bag interfacet.</p>
-      <p>Vores tilgang er kompromisl&oslash;s. Vi v&aelig;lger den rigtige teknologi til hvert projekt, designer fra bunden, og f&oslash;lger op l&aelig;nge efter launch.</p>
-    </div>
-    <div class="about-stats">
-      <div><div class="stat-number">100%</div><div class="stat-label">Skr&aelig;ddersyet</div></div>
-      <div><div class="stat-number">0</div><div class="stat-label">Templates brugt</div></div>
-      <div><div class="stat-number">24h</div><div class="stat-label">Responstid</div></div>
-      <div><div class="stat-number">&infin;</div><div class="stat-label">Ambitioner</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- Values -->
-<section>
-  <div class="reveal">
-    <p class="section-label">Vores tilgang</p>
-    <h2 class="section-title">Hvorfor v&aelig;lge Revise?</h2>
-  </div>
-  <div class="values-grid reveal">
-    <div class="value-item">
-      <h3>Ingen templates</h3>
-      <p>Hvert projekt designes fra bunden. Vi bruger ikke WordPress-themes eller f&aelig;rdige skabeloner — dit brand fortjener bedre.</p>
-    </div>
-    <div class="value-item">
-      <h3>Personlig kontakt</h3>
-      <p>Du taler direkte med dem der bygger din side. Ingen mellemled, ingen misforst&aring;elser — bare klar kommunikation.</p>
-    </div>
-    <div class="value-item">
-      <h3>Moderne teknologi</h3>
-      <p>Vi bygger med de nyeste og bedste teknologier. Din side er hurtig, sikker og klar til fremtiden fra dag &eacute;t.</p>
-    </div>
-    <div class="value-item">
-      <h3>Langsigtet support</h3>
-      <p>Vi forsvinder ikke efter launch. L&oslash;bende opdateringer, sikkerhedspatches og indholds&aelig;ndringer er en del af pakken.</p>
+<!-- VALUES -->
+<section class="values s-pad">
+  <div class="s-inner">
+    <div class="eyebrow r">Vores v&aelig;rdier</div>
+    <h2 class="s-h2 r">Hvorfor v&aelig;lge Revise?</h2>
+    <div class="values-grid">
+      <div class="value-card r">
+        <h3>Ingen templates</h3>
+        <p>Hvert projekt designes fra bunden. Vi bruger ikke WordPress-themes eller f&aelig;rdige skabeloner &mdash; dit brand fortjener bedre.</p>
+      </div>
+      <div class="value-card r r-d1">
+        <h3>Personlig kontakt</h3>
+        <p>Du taler direkte med dem der bygger din side. Ingen mellemled, ingen misforst&aring;elser &mdash; bare klar kommunikation.</p>
+      </div>
+      <div class="value-card r r-d2">
+        <h3>Moderne teknologi</h3>
+        <p>Vi bygger med de nyeste og bedste teknologier. Din side er hurtig, sikker og klar til fremtiden fra dag &eacute;t.</p>
+      </div>
+      <div class="value-card r r-d3">
+        <h3>Langsigtet support</h3>
+        <p>Vi forsvinder ikke efter launch. L&oslash;bende opdateringer, sikkerhedspatches og indholds&aelig;ndringer er en del af pakken.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section">
-  <div class="reveal">
-    <p class="section-label">Kontakt</p>
-    <h2 class="section-title">Klar til at starte?</h2>
-    <a href="kontakt.html" class="btn-primary">Kontakt os</a>
-  </div>
+<div class="cta-wrap">
+<section class="cta">
+  <div class="eyebrow r" style="color:rgba(255,255,255,.3)">Kontakt</div>
+  <h2 class="s-h2 r">Klar til at starte?</h2>
+  <p class="s-desc r" style="color:rgba(255,255,255,.45);margin:0 auto 40px">Fort&aelig;l os om din virksomhed &mdash; vi vender tilbage inden for 24 timer med en plan og et tilbud.</p>
+  <a href="kontakt.html" class="btn-white r">Kontakt os &rarr;</a>
 </section>
+</div>
 
-</main>
-
-<footer>
-  <div class="footer-left">
-    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="6" width="68" height="68" fill="none" stroke="#1a1714" stroke-width="2.4" rx="4"/>
-      <polygon points="74,6 74,34 46,6" fill="#1a1714" opacity="0.18"/>
-      <line x1="46" y1="6" x2="74" y2="34" stroke="#1a1714" stroke-width="1.8" opacity="0.45"/>
-    </svg>
-    <span>&copy; 2026 Revise. Alle rettigheder forbeholdes.</span>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">&copy; 2026 Revise. Alle rettigheder forbeholdes.</div>
+    <div class="footer-right">
+      <a href="mailto:kontakt@revise.dk">kontakt@revise.dk</a>
+      <a href="tel:+4523907290">+45 23 90 72 90</a>
+    </div>
   </div>
-  <ul class="footer-links">
-    <li><a href="mailto:kontakt@revise.dk">kontakt@revise.dk</a></li>
-    <li><a href="tel:+4523907290">+45 23 90 72 90</a></li>
-  </ul>
 </footer>
 
-<script src="app.js" defer></script>
 <script>
-// Stat counter animation
-const statObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const el = e.target;
-      const text = el.textContent.trim();
-      statObs.unobserve(el);
-      // Only animate numeric values
-      const match = text.match(/^(\d+)(.*)$/);
-      if (match) {
-        const target = parseInt(match[1]);
-        const suffix = match[2];
-        let current = 0;
-        const step = Math.ceil(target / 40);
-        const interval = setInterval(() => {
-          current += step;
-          if (current >= target) {
-            current = target;
-            clearInterval(interval);
-          }
-          el.textContent = current + suffix;
-        }, 30);
-      }
-    }
-  });
-}, { threshold: 0.3 });
-document.querySelectorAll('.stat-number').forEach(el => statObs.observe(el));
+// Nav blur
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40)});
+
+// Reveal on scroll
+var ro=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');ro.unobserve(e.target)}});
+},{threshold:.08,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.r').forEach(function(el){ro.observe(el)});
 </script>
-<script src="cookie-consent.js" defer></script>
 </body>
 </html>

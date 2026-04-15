@@ -3,314 +3,370 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>L&oslash;sninger &mdash; Revise</title>
-<meta name="description" content="WordPress, Shopify, Webflow, custom kode og mere. Vi kender alle platforme og hjælper dig med at vælge den rigtige løsning.">
-<link rel="canonical" href="https://revise.dk/loesninger.html">
-<meta property="og:title" content="Løsninger — Revise">
-<meta property="og:description" content="Vi arbejder med alle de store platforme og hjælper dig med at vælge den rigtige løsning.">
-<meta property="og:url" content="https://revise.dk/loesninger.html">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://revise.dk/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#f4f1ea">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><rect x='6' y='6' width='68' height='68' fill='%23ffffff' stroke='%231a1714' stroke-width='4' rx='5'/><polygon points='74,6 74,34 46,6' fill='%231a1714' opacity='0.25'/><line x1='46' y1='6' x2='74' y2='34' stroke='%231a1714' stroke-width='2.5' opacity='0.6'/></svg>">
+<title>Revise &mdash; L&oslash;sninger &amp; Platforme</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#f5f5f7;
+  --bg-white:#fff;
+  --bg-subtle:#eeeef0;
+  --border:rgba(0,0,0,.06);
+  --text:#1d1d1f;
+  --text-mid:#6e6e73;
+  --text-light:#86868b;
+  --serif:'Source Serif 4',Georgia,serif;
+  --sans:'DM Sans',-apple-system,sans-serif;
+  --max:1080px;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;padding:0 clamp(20px,4vw,48px);transition:all .3s}
+.nav.scrolled{background:rgba(245,245,247,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:var(--max);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-.5px}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;color:var(--text-mid);text-decoration:none;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--text)}
+.nav-cta{background:var(--text);color:var(--bg);padding:8px 20px;border-radius:100px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s}
+.nav-cta:hover{opacity:.8}
+
+/* ── PAGE HERO ── */
+.page-hero{padding:160px clamp(20px,4vw,48px) 80px;text-align:center;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 100%);position:relative}
+.page-hero::before{content:'';position:absolute;top:-20%;right:-10%;width:60%;height:70%;background:radial-gradient(ellipse,rgba(74,143,133,.06),transparent 70%);pointer-events:none}
+.page-hero::after{content:'';position:absolute;bottom:0;left:-10%;width:50%;height:60%;background:radial-gradient(ellipse,rgba(120,100,180,.04),transparent 70%);pointer-events:none}
+
+/* ── SECTION HELPERS ── */
+.s-pad{padding:clamp(80px,10vw,120px) clamp(20px,4vw,48px)}
+.s-inner{max-width:var(--max);margin:0 auto}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:16px}
+.s-h2{font-family:var(--serif);font-size:clamp(32px,4vw,52px);font-weight:700;letter-spacing:-1px;line-height:1.1;margin-bottom:20px}
+.s-desc{font-size:16px;line-height:1.8;color:var(--text-mid);max-width:520px;font-weight:300}
+
+/* ── PLATFORM GRID ── */
+.platform-section{background:var(--bg)}
+.platform-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+
+/* ── PLATFORM CARD ── */
+.platform-card{background:var(--bg-white);border-radius:20px;padding:40px 36px;box-shadow:0 2px 8px rgba(0,0,0,.03);transition:box-shadow .3s,transform .3s}
+.platform-card:hover{box-shadow:0 8px 30px rgba(0,0,0,.07);transform:translateY(-2px)}
+.platform-header{display:flex;align-items:center;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+.platform-name{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:-.3px}
+.platform-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.5px;padding:4px 12px;border-radius:100px;background:var(--bg-subtle);color:var(--text-mid)}
+.platform-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5px;padding:4px 12px;border-radius:100px;background:#eaf5f3;color:#4a8f85}
+.platform-desc{font-size:14px;color:var(--text-mid);line-height:1.75;margin-bottom:28px;margin-top:12px}
+
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px}
+.pros-cons h4{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px}
+.pros-cons h4.pros-title{color:#1ea83b}
+.pros-cons h4.cons-title{color:#e8453c}
+.pros-cons ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.pros-cons li{font-size:13px;color:var(--text-mid);line-height:1.6;display:flex;align-items:flex-start;gap:8px}
+.pros-cons li span.pro-icon{color:#1ea83b;font-weight:700;flex-shrink:0}
+.pros-cons li span.con-icon{color:#e8453c;font-weight:700;flex-shrink:0}
+
+.best-for{border-top:1px solid var(--border);padding-top:20px}
+.best-for-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:6px}
+.best-for p{font-size:13px;color:var(--text-mid);line-height:1.7}
+
+/* ── CTA ── */
+.cta{background:var(--text);color:var(--bg-white);text-align:center;border-radius:24px;margin:0 clamp(20px,4vw,48px);padding:clamp(60px,8vw,100px) clamp(20px,4vw,48px)}
+.cta-wrap{margin-bottom:clamp(60px,8vw,100px)}
+.cta .s-h2{color:var(--bg-white)}
+.cta .s-desc{color:rgba(255,255,255,.45);margin:0 auto 40px}
+.btn-white{background:var(--bg-white);color:var(--text);padding:16px 36px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .25s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+
+/* ── FOOTER ── */
+.footer{padding:32px clamp(20px,4vw,48px)}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-left{font-size:12px;color:var(--text-light)}
+.footer-right{display:flex;gap:24px}
+.footer-right a{font-size:12px;color:var(--text-light);text-decoration:none;transition:color .2s}
+.footer-right a:hover{color:var(--text)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .platform-grid{grid-template-columns:1fr}
+  .pros-cons{grid-template-columns:1fr}
+  .platform-card{padding:32px 24px}
+  .cta{margin:0 12px;border-radius:20px}
+}
+
+/* ── REVEAL ── */
+.r{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.25,.1,.25,1),transform .8s cubic-bezier(.25,.1,.25,1)}
+.r.v{opacity:1;transform:none}
+.r-d1{transition-delay:.1s}
+.r-d2{transition-delay:.2s}
+.r-d3{transition-delay:.3s}
+</style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">
-    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="6" width="68" height="68" fill="none" stroke="#1a1714" stroke-width="2.8" rx="5"/>
-      <polygon points="74,6 74,34 46,6" fill="#1a1714" opacity="0.18"/>
-      <line x1="46" y1="6" x2="74" y2="34" stroke="#1a1714" stroke-width="2" opacity="0.45"/>
-    </svg>
-    <span>revise</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Forside</a></li>
-    <li><a href="ydelser.html">Ydelser</a></li>
-    <li><a href="loesninger.html" class="current">L&oslash;sninger</a></li>
-    <li><a href="om.html">Om os</a></li>
-  </ul>
-  <a href="kontakt.html" class="nav-cta">Kontakt os</a>
-  <button class="mobile-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">revise</a>
+    <ul class="nav-links">
+      <li><a href="ydelser.html">Ydelser</a></li>
+      <li><a href="loesninger.html" class="active">L&oslash;sninger</a></li>
+      <li><a href="om.html">Om os</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Start dit projekt</a>
+  </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" onclick="closeMenu()">Forside</a>
-  <a href="ydelser.html" onclick="closeMenu()">Ydelser</a>
-  <a href="loesninger.html" onclick="closeMenu()">L&oslash;sninger</a>
-  <a href="om.html" onclick="closeMenu()">Om os</a>
-  <a href="kontakt.html" class="mobile-cta" onclick="closeMenu()">Kontakt os</a>
-</div>
 
-<main>
-
-<!-- Page Head -->
-<section class="page-head">
-  <div class="reveal">
-    <p class="section-label">L&oslash;sninger</p>
-    <h1 class="section-title">Hver platform har sine styrker.<br>Vi kender dem alle.</h1>
-    <p class="section-desc">Vi s&aelig;lger ikke &eacute;n l&oslash;sning til alle. Vi analyserer dit behov og anbefaler den platform der giver mest mening for din forretning, dit budget og dine ambitioner.</p>
+<!-- HERO -->
+<section class="page-hero">
+  <div class="s-inner" style="display:flex;flex-direction:column;align-items:center">
+    <div class="eyebrow r">L&oslash;sninger</div>
+    <h2 class="s-h2 r r-d1" style="text-align:center;max-width:700px">Hver platform har sine styrker. Vi kender dem alle.</h2>
+    <p class="s-desc r r-d2" style="text-align:center;max-width:540px">Vi s&aelig;lger ikke &eacute;n l&oslash;sning til alle. Vi analyserer dit behov og anbefaler den platform der giver mest mening for din forretning.</p>
   </div>
 </section>
 
-<!-- Platform Grid -->
-<section class="platforms-section">
-  <div class="platform-grid reveal">
+<!-- PLATFORMS -->
+<section class="platform-section s-pad">
+  <div class="s-inner">
+    <div class="platform-grid">
 
-    <!-- Custom Code -->
-    <div class="platform-card">
-      <span class="platform-rec">Vores speciale</span>
-      <div class="platform-header">
-        <div class="platform-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="8,6 2,12 8,18"/><polyline points="16,6 22,12 16,18"/><line x1="13.5" y1="4" x2="10.5" y2="20"/>
-          </svg>
-        </div>
-        <div class="platform-name">
-          <h2>Custom kode</h2>
+      <!-- Custom kode -->
+      <div class="platform-card r">
+        <div class="platform-header">
+          <span class="platform-name">Custom kode</span>
           <span class="platform-tag">Skr&aelig;ddersyet</span>
+          <span class="platform-badge">Vores speciale</span>
+        </div>
+        <p class="platform-desc">Bygget fra bunden uden framework eller CMS. Resultatet er en lynhurtig, unik hjemmeside med fuld kontrol over hvert eneste pixel.</p>
+        <div class="pros-cons">
+          <div>
+            <h4 class="pros-title">Fordele</h4>
+            <ul>
+              <li><span class="pro-icon">&#10003;</span> Maksimal hastighed og performance</li>
+              <li><span class="pro-icon">&#10003;</span> Fuldst&aelig;ndig designfrihed</li>
+              <li><span class="pro-icon">&#10003;</span> Ingen afh&aelig;ngighed af tredjepart</li>
+              <li><span class="pro-icon">&#10003;</span> Bedste Lighthouse scores</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="cons-title">Ulemper</h4>
+            <ul>
+              <li><span class="con-icon">&#10005;</span> H&oslash;jere startpris</li>
+              <li><span class="con-icon">&#10005;</span> Kr&aelig;ver udvikler til &aelig;ndringer</li>
+              <li><span class="con-icon">&#10005;</span> Ingen built-in CMS</li>
+            </ul>
+          </div>
+        </div>
+        <div class="best-for">
+          <div class="best-for-label">Bedst til</div>
+          <p>Virksomheder der vil skille sig ud med et unikt design og prioriterer hastighed og performance.</p>
         </div>
       </div>
-      <p class="platform-desc">Bygget fra bunden uden framework eller CMS. Resultatet er en lynhurtig, unik hjemmeside med fuld kontrol over hvert eneste pixel.</p>
-      <div class="platform-lists">
-        <div class="platform-pros">
-          <h3>Fordele</h3>
-          <ul>
-            <li>Maksimal hastighed og performance</li>
-            <li>Fuldst&aelig;ndig designfrihed</li>
-            <li>Ingen afh&aelig;ngighed af tredjepart</li>
-            <li>Bedste Lighthouse scores</li>
-          </ul>
-        </div>
-        <div class="platform-cons">
-          <h3>Ulemper</h3>
-          <ul>
-            <li>H&oslash;jere startpris</li>
-            <li>Kr&aelig;ver udvikler til &aelig;ndringer</li>
-            <li>Ingen built-in CMS</li>
-          </ul>
-        </div>
-      </div>
-      <p class="platform-best"><strong>Bedst til:</strong> Virksomheder der vil skille sig ud med et unikt design og prioriterer hastighed og performance.</p>
-    </div>
 
-    <!-- WordPress -->
-    <div class="platform-card">
-      <div class="platform-header">
-        <div class="platform-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><path d="M7.5 8.5l2 7 2.5-5 2.5 5 2-7"/>
-          </svg>
-        </div>
-        <div class="platform-name">
-          <h2>WordPress</h2>
+      <!-- WordPress -->
+      <div class="platform-card r r-d1">
+        <div class="platform-header">
+          <span class="platform-name">WordPress</span>
           <span class="platform-tag">CMS Platform</span>
         </div>
-      </div>
-      <p class="platform-desc">Verdens mest popul&aelig;re CMS. Perfekt til virksomheder der vil redigere indhold selv, med adgang til tusindvis af plugins og temaer.</p>
-      <div class="platform-lists">
-        <div class="platform-pros">
-          <h3>Fordele</h3>
-          <ul>
-            <li>Nemt at redigere indhold selv</li>
-            <li>K&aelig;mpe plugin-&oslash;kosystem</li>
-            <li>Stor community og support</li>
-            <li>SEO-venligt med de rette plugins</li>
-          </ul>
+        <p class="platform-desc">Verdens mest popul&aelig;re CMS. Perfekt til virksomheder der vil redigere indhold selv.</p>
+        <div class="pros-cons">
+          <div>
+            <h4 class="pros-title">Fordele</h4>
+            <ul>
+              <li><span class="pro-icon">&#10003;</span> Nemt at redigere indhold selv</li>
+              <li><span class="pro-icon">&#10003;</span> K&aelig;mpe plugin-&oslash;kosystem</li>
+              <li><span class="pro-icon">&#10003;</span> Stor community og support</li>
+              <li><span class="pro-icon">&#10003;</span> SEO-venligt</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="cons-title">Ulemper</h4>
+            <ul>
+              <li><span class="con-icon">&#10005;</span> Kr&aelig;ver l&oslash;bende sikkerhedsopdateringer</li>
+              <li><span class="con-icon">&#10005;</span> Kan blive langsomt med mange plugins</li>
+              <li><span class="con-icon">&#10005;</span> S&aring;rbar uden vedligeholdelse</li>
+            </ul>
+          </div>
         </div>
-        <div class="platform-cons">
-          <h3>Ulemper</h3>
-          <ul>
-            <li>Kr&aelig;ver l&oslash;bende sikkerhedsopdateringer</li>
-            <li>Kan blive langsomt med mange plugins</li>
-            <li>S&aring;rbar uden vedligeholdelse</li>
-          </ul>
+        <div class="best-for">
+          <div class="best-for-label">Bedst til</div>
+          <p>Blogs, virksomhedssider med hyppige indholdsopdateringer, og teams der vil redigere uden teknisk hj&aelig;lp.</p>
         </div>
       </div>
-      <p class="platform-best"><strong>Bedst til:</strong> Blogs, virksomhedssider med hyppige indholdsopdateringer, og teams der vil redigere uden teknisk hj&aelig;lp.</p>
-    </div>
 
-    <!-- Shopify -->
-    <div class="platform-card">
-      <div class="platform-header">
-        <div class="platform-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
-          </svg>
-        </div>
-        <div class="platform-name">
-          <h2>Shopify</h2>
+      <!-- Shopify -->
+      <div class="platform-card r">
+        <div class="platform-header">
+          <span class="platform-name">Shopify</span>
           <span class="platform-tag">E-commerce</span>
         </div>
-      </div>
-      <p class="platform-desc">Markedets f&oslash;rende e-commerce platform. Alt hvad du skal bruge for at s&aelig;lge online &mdash; fra produktstyring til betalingsl&oslash;sninger.</p>
-      <div class="platform-lists">
-        <div class="platform-pros">
-          <h3>Fordele</h3>
-          <ul>
-            <li>St&aelig;rk checkout og betalingsflow</li>
-            <li>Lagerstyring og ordreh&aring;ndtering</li>
-            <li>App-&oslash;kosystem til udvidelser</li>
-            <li>Skalerer med din forretning</li>
-          </ul>
+        <p class="platform-desc">Markedets f&oslash;rende e-commerce platform. Alt hvad du skal bruge for at s&aelig;lge online.</p>
+        <div class="pros-cons">
+          <div>
+            <h4 class="pros-title">Fordele</h4>
+            <ul>
+              <li><span class="pro-icon">&#10003;</span> St&aelig;rk checkout og betalingsflow</li>
+              <li><span class="pro-icon">&#10003;</span> Lagerstyring og ordreh&aring;ndtering</li>
+              <li><span class="pro-icon">&#10003;</span> App-&oslash;kosystem til udvidelser</li>
+              <li><span class="pro-icon">&#10003;</span> Skalerer med din forretning</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="cons-title">Ulemper</h4>
+            <ul>
+              <li><span class="con-icon">&#10005;</span> M&aring;nedlig afgift + transaktionsgebyr</li>
+              <li><span class="con-icon">&#10005;</span> Begr&aelig;nset designtilpasning</li>
+              <li><span class="con-icon">&#10005;</span> Vendor lock-in p&aring; data</li>
+            </ul>
+          </div>
         </div>
-        <div class="platform-cons">
-          <h3>Ulemper</h3>
-          <ul>
-            <li>M&aring;nedlig afgift + transaktionsgebyr</li>
-            <li>Begr&aelig;nset designtilpasning</li>
-            <li>Vendor lock-in p&aring; data</li>
-          </ul>
+        <div class="best-for">
+          <div class="best-for-label">Bedst til</div>
+          <p>Webshops, produktbaserede virksomheder og brands der vil s&aelig;lge direkte til forbrugeren.</p>
         </div>
       </div>
-      <p class="platform-best"><strong>Bedst til:</strong> Webshops, produktbaserede virksomheder og brands der vil s&aelig;lge direkte til forbrugeren.</p>
-    </div>
 
-    <!-- Webflow -->
-    <div class="platform-card">
-      <div class="platform-header">
-        <div class="platform-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-          </svg>
+      <!-- Webflow -->
+      <div class="platform-card r r-d1">
+        <div class="platform-header">
+          <span class="platform-name">Webflow</span>
+          <span class="platform-tag">Visuelt byggev&aelig;rkt&oslash;j</span>
         </div>
-        <div class="platform-name">
-          <h2>Webflow</h2>
-          <span class="platform-tag">Visuelt byggeværk&oslash;j</span>
+        <p class="platform-desc">Et professionelt no-code v&aelig;rkt&oslash;j der kombinerer visuel design med clean code output.</p>
+        <div class="pros-cons">
+          <div>
+            <h4 class="pros-title">Fordele</h4>
+            <ul>
+              <li><span class="pro-icon">&#10003;</span> Visuelt design med professionelt output</li>
+              <li><span class="pro-icon">&#10003;</span> Built-in CMS og hosting</li>
+              <li><span class="pro-icon">&#10003;</span> St&aelig;rk til animationer</li>
+              <li><span class="pro-icon">&#10003;</span> Clean HTML/CSS output</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="cons-title">Ulemper</h4>
+            <ul>
+              <li><span class="con-icon">&#10005;</span> Stejl l&aelig;ringskurve</li>
+              <li><span class="con-icon">&#10005;</span> H&oslash;jere pris end traditionelle l&oslash;sninger</li>
+              <li><span class="con-icon">&#10005;</span> Begr&aelig;nset backend-funktionalitet</li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <p class="platform-desc">Et professionelt no-code v&aelig;rkt&oslash;j der kombinerer visuel design med clean code output. Perfekt til design-fokuserede projekter.</p>
-      <div class="platform-lists">
-        <div class="platform-pros">
-          <h3>Fordele</h3>
-          <ul>
-            <li>Visuelt design med professionelt output</li>
-            <li>Built-in CMS og hosting</li>
-            <li>St&aelig;rk til animationer og interaktioner</li>
-            <li>Clean HTML/CSS output</li>
-          </ul>
-        </div>
-        <div class="platform-cons">
-          <h3>Ulemper</h3>
-          <ul>
-            <li>Stejl l&aelig;ringskurve</li>
-            <li>H&oslash;jere pris end traditionelle l&oslash;sninger</li>
-            <li>Begr&aelig;nset backend-funktionalitet</li>
-          </ul>
+        <div class="best-for">
+          <div class="best-for-label">Bedst til</div>
+          <p>Design-fokuserede virksomheder, kreative bureauer og projekter hvor visuelt udtryk er afg&oslash;rende.</p>
         </div>
       </div>
-      <p class="platform-best"><strong>Bedst til:</strong> Design-fokuserede virksomheder, kreative bureauer og projekter hvor visuelt udtryk er afg&oslash;rende.</p>
-    </div>
 
-    <!-- goMember -->
-    <div class="platform-card">
-      <div class="platform-header">
-        <div class="platform-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
-          </svg>
-        </div>
-        <div class="platform-name">
-          <h2>goMember</h2>
+      <!-- goMember -->
+      <div class="platform-card r">
+        <div class="platform-header">
+          <span class="platform-name">goMember</span>
           <span class="platform-tag">Dansk medlemsplatform</span>
         </div>
-      </div>
-      <p class="platform-desc">Dansk platform bygget specifikt til foreninger, klubber og organisationer. Medlemsstyring, kontingent og kommunikation i &eacute;t system.</p>
-      <div class="platform-lists">
-        <div class="platform-pros">
-          <h3>Fordele</h3>
-          <ul>
-            <li>Alt-i-&eacute;n l&oslash;sning til foreninger</li>
-            <li>Dansk support og GDPR-compliant</li>
-            <li>Medlemskartotek og kontingent built-in</li>
-            <li>Integrerbar med eksisterende hjemmeside</li>
-          </ul>
+        <p class="platform-desc">Dansk platform bygget specifikt til foreninger, klubber og organisationer.</p>
+        <div class="pros-cons">
+          <div>
+            <h4 class="pros-title">Fordele</h4>
+            <ul>
+              <li><span class="pro-icon">&#10003;</span> Alt-i-&eacute;n l&oslash;sning til foreninger</li>
+              <li><span class="pro-icon">&#10003;</span> Dansk support og GDPR-compliant</li>
+              <li><span class="pro-icon">&#10003;</span> Medlemskartotek og kontingent built-in</li>
+              <li><span class="pro-icon">&#10003;</span> Integrerbar med eksisterende hjemmeside</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="cons-title">Ulemper</h4>
+            <ul>
+              <li><span class="con-icon">&#10005;</span> Begr&aelig;nset designfrihed</li>
+              <li><span class="con-icon">&#10005;</span> Prim&aelig;rt rettet mod foreninger</li>
+              <li><span class="con-icon">&#10005;</span> M&aring;nedlig licensafgift</li>
+            </ul>
+          </div>
         </div>
-        <div class="platform-cons">
-          <h3>Ulemper</h3>
-          <ul>
-            <li>Begr&aelig;nset designfrihed</li>
-            <li>Prim&aelig;rt rettet mod foreninger</li>
-            <li>M&aring;nedlig licensafgift</li>
-          </ul>
+        <div class="best-for">
+          <div class="best-for-label">Bedst til</div>
+          <p>Foreninger, sportsklubber, frivillige organisationer og enhver forening med medlemsstyring.</p>
         </div>
       </div>
-      <p class="platform-best"><strong>Bedst til:</strong> Foreninger, sportsklubber, frivillige organisationer og enhver forening med medlemsstyring.</p>
-    </div>
 
-    <!-- Wix / Squarespace -->
-    <div class="platform-card">
-      <div class="platform-header">
-        <div class="platform-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
-          </svg>
-        </div>
-        <div class="platform-name">
-          <h2>Wix / Squarespace</h2>
+      <!-- Wix / Squarespace -->
+      <div class="platform-card r r-d1">
+        <div class="platform-header">
+          <span class="platform-name">Wix / Squarespace</span>
           <span class="platform-tag">DIY Platforme</span>
         </div>
-      </div>
-      <p class="platform-desc">Brugervenlige drag-and-drop platforme til dem der vil bygge hurtigt og billigt. Nemt at komme i gang &mdash; men med begr&aelig;nsninger.</p>
-      <div class="platform-lists">
-        <div class="platform-pros">
-          <h3>Fordele</h3>
-          <ul>
-            <li>Laveste startpris</li>
-            <li>Intuitivt og nemt at bruge</li>
-            <li>Hurtigt at komme online</li>
-            <li>Alt-i-&eacute;n hosting og dom&aelig;ne</li>
-          </ul>
+        <p class="platform-desc">Brugervenlige drag-and-drop platforme til dem der vil bygge hurtigt og billigt.</p>
+        <div class="pros-cons">
+          <div>
+            <h4 class="pros-title">Fordele</h4>
+            <ul>
+              <li><span class="pro-icon">&#10003;</span> Laveste startpris</li>
+              <li><span class="pro-icon">&#10003;</span> Intuitivt og nemt at bruge</li>
+              <li><span class="pro-icon">&#10003;</span> Hurtigt at komme online</li>
+              <li><span class="pro-icon">&#10003;</span> Alt-i-&eacute;n hosting og dom&aelig;ne</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="cons-title">Ulemper</h4>
+            <ul>
+              <li><span class="con-icon">&#10005;</span> Langsom loading og d&aring;rlig performance</li>
+              <li><span class="con-icon">&#10005;</span> Begr&aelig;nset SEO-optimering</li>
+              <li><span class="con-icon">&#10005;</span> Templates der ligner alle andres</li>
+              <li><span class="con-icon">&#10005;</span> Sv&aelig;rt at skalere eller flytte</li>
+            </ul>
+          </div>
         </div>
-        <div class="platform-cons">
-          <h3>Ulemper</h3>
-          <ul>
-            <li>Langsom loading og d&aring;rlig performance</li>
-            <li>Begr&aelig;nset SEO-optimering</li>
-            <li>Templates der ligner alle andres</li>
-            <li>Sv&aelig;rt at skalere eller flytte</li>
-          </ul>
+        <div class="best-for">
+          <div class="best-for-label">Bedst til</div>
+          <p>Solopreneurs, hobbyister og dem der har brug for en simpel online tilstedev&aelig;relse hurtigt.</p>
         </div>
       </div>
-      <p class="platform-best"><strong>Bedst til:</strong> Solopreneurs, hobbyister og dem der har brug for en simpel online tilstev&aelig;relse hurtigt.</p>
-    </div>
 
+    </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section">
-  <div class="reveal">
-    <p class="section-label">N&aelig;ste skridt</p>
-    <h2 class="section-title">Ikke sikker p&aring; hvad<br>der passer til dig?</h2>
-    <p class="section-desc">Fort&aelig;l os om dit projekt &mdash; vi r&aring;dgiver gratis og finder den l&oslash;sning der skaber mest v&aelig;rdi for din forretning.</p>
-    <a href="kontakt.html" class="btn-primary">F&aring; gratis r&aring;dgivning</a>
-  </div>
+<div class="cta-wrap">
+<section class="cta">
+  <div class="eyebrow r" style="color:rgba(255,255,255,.3)">R&aring;dgivning</div>
+  <h2 class="s-h2 r">Ikke sikker p&aring; hvad der passer til dig?</h2>
+  <p class="s-desc r" style="color:rgba(255,255,255,.45);margin:0 auto 40px">Fort&aelig;l os om dit projekt &mdash; vi r&aring;dgiver gratis og finder den l&oslash;sning der skaber mest v&aelig;rdi for din forretning.</p>
+  <a href="kontakt.html" class="btn-white r">F&aring; gratis r&aring;dgivning &rarr;</a>
 </section>
+</div>
 
-</main>
-
-<footer>
-  <div class="footer-left">
-    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="6" width="68" height="68" fill="none" stroke="#1a1714" stroke-width="2.4" rx="4"/>
-      <polygon points="74,6 74,34 46,6" fill="#1a1714" opacity="0.18"/>
-      <line x1="46" y1="6" x2="74" y2="34" stroke="#1a1714" stroke-width="1.8" opacity="0.45"/>
-    </svg>
-    <span>&copy; 2026 Revise. Alle rettigheder forbeholdes.</span>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">&copy; 2026 Revise. Alle rettigheder forbeholdes.</div>
+    <div class="footer-right">
+      <a href="mailto:kontakt@revise.dk">kontakt@revise.dk</a>
+      <a href="tel:+4523907290">+45 23 90 72 90</a>
+    </div>
   </div>
-  <ul class="footer-links">
-    <li><a href="mailto:kontakt@revise.dk">kontakt@revise.dk</a></li>
-    <li><a href="tel:+4523907290">+45 23 90 72 90</a></li>
-  </ul>
 </footer>
 
-<script src="app.js" defer></script>
-<script src="cookie-consent.js" defer></script>
+<script>
+// Nav blur on scroll
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40)});
+
+// Reveal on scroll
+var ro=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');ro.unobserve(e.target)}});
+},{threshold:.08,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.r').forEach(function(el){ro.observe(el)});
+</script>
 </body>
 </html>

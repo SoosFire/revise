@@ -3,528 +3,434 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Revise — Vi reviderer din digitale tilstedeværelse</title>
-<meta name="description" content="Strategisk digital design og udvikling. Vi bygger websites der gør indtryk.">
-<meta property="og:title" content="Revise — Vi reviderer din digitale tilstedeværelse">
-<meta property="og:description" content="Strategisk digital design og udvikling for ambitiøse virksomheder.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://revise.dk">
-<meta property="og:image" content="https://revise.dk/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#f4f1ea">
-<link rel="canonical" href="https://revise.dk/">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Revise",
-  "url": "https://revise.dk",
-  "email": "kontakt@revise.dk",
-  "description": "Strategisk digital design og udvikling. Vi bygger websites der gør indtryk.",
-  "areaServed": {"@type": "Country", "name": "Denmark"},
-  "serviceType": ["Webdesign", "Webudvikling", "SEO", "Hosting"],
-  "knowsLanguage": ["da", "en"],
-  "sameAs": []
-}
-</script>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><rect x='6' y='6' width='68' height='68' fill='%23ffffff' stroke='%231a1714' stroke-width='4' rx='5'/><polygon points='74,6 74,34 46,6' fill='%231a1714' opacity='0.25'/><line x1='46' y1='6' x2='74' y2='34' stroke='%231a1714' stroke-width='2.5' opacity='0.6'/></svg>">
+<title>Revise &mdash; Vi reviderer din digitale tilstedev&aelig;relse</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="preload" href="assets/slide-efter.jpg?v=4" as="image">
-<link rel="stylesheet" href="styles.css?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* Page-specific: hero animation timing */
-  .hero-overline { animation: fadeUp 0.9s ease 0.2s both; }
-  .hero h1 { animation: fadeUp 0.9s ease 0.55s both; }
-  .hero-sub { animation: fadeUp 0.9s ease 0.9s both; }
-  .hero-cta-row { animation: fadeUp 0.9s ease 1.2s both; }
-  .hero-fold { animation: fadeIn 1.5s ease 0.6s both; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
-  /* Page-specific: hero layout */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 160px 48px 120px;
-    position: relative;
-  }
-  .hero-overline {
-    font-size: 11px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    opacity: 0.4;
-    margin-bottom: 28px;
-  }
-  .hero h1 {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: clamp(42px, 7vw, 88px);
-    line-height: 1.05;
-    letter-spacing: -2px;
-    max-width: 900px;
-  }
-  .hero-sub {
-    font-size: clamp(16px, 2vw, 20px);
-    opacity: 0.4;
-    max-width: 520px;
-    margin-top: 28px;
-    line-height: 1.7;
-  }
-  .hero-cta-row {
-    display: flex;
-    gap: 16px;
-    margin-top: 48px;
-  }
-  .hero-fold {
-    position: absolute;
-    right: 48px;
-    bottom: 80px;
-    opacity: 0.04;
-  }
+:root{
+  --bg:#f5f5f7;
+  --bg-white:#fff;
+  --bg-subtle:#eeeef0;
+  --border:rgba(0,0,0,.06);
+  --text:#1d1d1f;
+  --text-mid:#6e6e73;
+  --text-light:#86868b;
+  --serif:'Source Serif 4',Georgia,serif;
+  --sans:'DM Sans',-apple-system,sans-serif;
+  --max:1080px;
+}
 
-  /* Teaser "see all" link */
-  .section-more {
-    display: inline-block;
-    margin-top: 40px;
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 15px;
-    color: var(--fg);
-    opacity: 0.5;
-    text-decoration: none;
-    transition: opacity 0.3s ease;
-    letter-spacing: 0.3px;
-  }
-  .section-more:hover { opacity: 1; }
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-  @media (max-width: 768px) {
-    .hero { padding: 140px 24px 80px; }
-    .hero-fold { display: none; }
-    .hero-cta-row { flex-direction: column; }
-    .btn-primary, .btn-secondary { text-align: center; }
-  }
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;padding:0 clamp(20px,4vw,48px);transition:all .3s}
+.nav.scrolled{background:rgba(245,245,247,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:var(--max);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-.5px}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;color:var(--text-mid);text-decoration:none;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--text);color:var(--bg);padding:8px 20px;border-radius:100px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s}
+.nav-cta:hover{opacity:.8}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px clamp(20px,4vw,48px) 60px;position:relative;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 100%)}
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:60%;height:70%;background:radial-gradient(ellipse,rgba(74,143,133,.06),transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:-10%;width:50%;height:60%;background:radial-gradient(ellipse,rgba(120,100,180,.04),transparent 70%);pointer-events:none}
+.hero-label{font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);margin-bottom:24px}
+.hero h1{font-family:var(--serif);font-size:clamp(44px,7vw,80px);font-weight:700;line-height:1.05;letter-spacing:-2px;margin-bottom:20px;max-width:700px}
+.hero h1 em{font-style:italic;color:#4a8f85}
+.hero-desc{font-size:18px;color:var(--text-mid);line-height:1.7;margin-bottom:40px;max-width:480px;font-weight:300}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:80px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:100px;font-size:14px;font-weight:600;text-decoration:none;transition:all .25s}
+.btn-dark{background:var(--text);color:var(--bg-white)}
+.btn-dark:hover{opacity:.85;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text);border:1.5px solid rgba(0,0,0,.15)}
+.btn-ghost:hover{border-color:var(--text)}
+
+/* ── HERO DEVICE IMAGE ── */
+.hero-devices{width:100%;max-width:1000px;margin:0 auto}
+.hero-devices img{width:100%;height:auto;display:block}
+
+/* ── STATS ── */
+.stats{padding:80px clamp(20px,4vw,48px);background:var(--bg-white)}
+.stats-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
+.stat-num{font-family:var(--serif);font-size:clamp(36px,4vw,52px);font-weight:700;color:var(--text);line-height:1;letter-spacing:-1px}
+.stat-label{font-size:13px;color:var(--text-light);margin-top:8px;font-weight:400}
+
+/* ── SECTION HELPERS ── */
+.s-pad{padding:clamp(80px,10vw,120px) clamp(20px,4vw,48px)}
+.s-inner{max-width:var(--max);margin:0 auto}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:16px}
+.s-h2{font-family:var(--serif);font-size:clamp(32px,4vw,52px);font-weight:700;letter-spacing:-1px;line-height:1.1;margin-bottom:20px}
+.s-desc{font-size:16px;line-height:1.8;color:var(--text-mid);max-width:480px;font-weight:300}
+
+/* ── SERVICES ── */
+.services{background:var(--bg-white)}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:48px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.srv-card{background:var(--bg-white);padding:40px 32px}
+.srv-num{font-family:var(--serif);font-size:13px;font-weight:600;color:var(--text-light);margin-bottom:20px}
+.srv-card h3{font-size:20px;font-weight:700;margin-bottom:10px;letter-spacing:-.3px}
+.srv-card p{font-size:14px;color:var(--text-mid);line-height:1.7}
+
+/* ── TRANSFORMATION SLIDER ── */
+.transform{background:var(--bg)}
+.slider-wrap{position:relative;max-width:960px;margin:48px auto 0;border-radius:20px;overflow:hidden;cursor:col-resize;box-shadow:0 4px 24px rgba(0,0,0,.06);aspect-ratio:1370/914;-webkit-user-select:none;user-select:none}
+.slider-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;pointer-events:none;display:block}
+.slider-img-after{z-index:1}
+.slider-img-before{z-index:2;clip-path:inset(0 0 0 50%)}
+.slider-handle{position:absolute;top:0;bottom:0;left:50%;z-index:3;width:3px;background:var(--bg-white);transform:translateX(-50%);pointer-events:none;box-shadow:0 0 8px rgba(0,0,0,.15)}
+.slider-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:var(--bg-white);box-shadow:0 2px 12px rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;pointer-events:none}
+.slider-knob svg{width:20px;height:20px;color:var(--text-mid)}
+.slider-labels{display:flex;justify-content:space-between;margin-top:16px;max-width:960px;margin-left:auto;margin-right:auto}
+.slider-label{font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px}
+.slider-label-dot{width:8px;height:8px;border-radius:50%}
+.dot-red{background:#e8453c}
+.dot-green{background:#1ea83b}
+.slider-label span{color:var(--text-mid);font-weight:400}
+
+/* ── LIGHTHOUSE ── */
+.lighthouse{background:var(--bg-white)}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.ba-card{border-radius:20px;padding:36px;border:1px solid var(--border)}
+.ba-after{border-color:rgba(30,168,59,.15);background:linear-gradient(135deg,#f8fdf9,#fff)}
+.ba-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:24px}
+.ba-tag-red{background:#fff0ef;color:#e8453c}
+.ba-tag-green{background:#eefbf0;color:#1ea83b}
+.ba-scores{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.ba-score{text-align:center;padding:20px 8px;border-radius:14px;background:var(--bg)}
+.ba-score-num{font-family:var(--serif);font-size:36px;font-weight:700;line-height:1;letter-spacing:-1px}
+.ba-score-num.red{color:#e8453c}
+.ba-score-num.orange{color:#e89a3c}
+.ba-score-num.green{color:#1ea83b}
+.ba-score-label{font-size:11px;color:var(--text-light);margin-top:6px}
+.ba-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ba-list li{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-mid)}
+.ba-list .x{color:#e8453c;font-weight:700}
+.ba-list .ok{color:#1ea83b;font-weight:700}
+
+/* ── SOCIAL PROOF ── */
+.proof{background:var(--bg);overflow:hidden}
+.proof-inner{max-width:680px;margin:0 auto;text-align:center}
+.proof-stars{display:flex;gap:4px;justify-content:center;margin-bottom:28px}
+.proof-star{width:28px;height:28px}
+.proof-quote{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:400;line-height:1.55;letter-spacing:-.3px;color:var(--text);margin-bottom:32px;font-style:italic}
+.proof-author{display:flex;flex-direction:column;align-items:center;gap:4px}
+.proof-name{font-size:14px;font-weight:600;color:var(--text);letter-spacing:-.1px}
+.proof-role{font-size:13px;color:var(--text-light);font-weight:400}
+.proof-tp{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:32px;padding-top:28px;border-top:1px solid var(--border)}
+.proof-tp svg{height:20px;width:auto}
+.proof-tp span{font-size:12px;color:var(--text-light);font-weight:500}
+
+/* ── PROCESS ── */
+.process{background:var(--bg)}
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.process-card{background:var(--bg-white);border-radius:20px;padding:36px 28px;box-shadow:0 2px 8px rgba(0,0,0,.03)}
+.process-step{font-family:var(--serif);font-size:40px;font-weight:700;color:var(--bg-subtle);line-height:1;margin-bottom:20px;letter-spacing:-1px}
+.process-card h3{font-size:17px;font-weight:700;margin-bottom:10px;letter-spacing:-.2px}
+.process-card p{font-size:14px;color:var(--text-mid);line-height:1.7}
+
+/* ── CTA ── */
+.cta{background:var(--text);color:var(--bg-white);text-align:center;border-radius:24px;margin:0 clamp(20px,4vw,48px);padding:clamp(60px,8vw,100px) clamp(20px,4vw,48px)}
+.cta-wrap{margin-bottom:clamp(60px,8vw,100px)}
+.cta .s-h2{color:var(--bg-white)}
+.cta .s-desc{color:rgba(255,255,255,.45);margin:0 auto 40px}
+.btn-white{background:var(--bg-white);color:var(--text);padding:16px 36px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .25s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+
+/* ── FOOTER ── */
+.footer{padding:32px clamp(20px,4vw,48px)}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-left{font-size:12px;color:var(--text-light)}
+.footer-right{display:flex;gap:24px}
+.footer-right a{font-size:12px;color:var(--text-light);text-decoration:none;transition:color .2s}
+.footer-right a:hover{color:var(--text)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .transform-grid{grid-template-columns:1fr;gap:16px}
+  .transform-arrow{transform:rotate(90deg)}
+  .ba-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .stats-inner{grid-template-columns:1fr 1fr;gap:24px}
+  .srv-grid,.process-grid{grid-template-columns:1fr}
+  .hero h1{letter-spacing:-1px}
+  .cta{margin:0 12px;border-radius:20px}
+}
+
+/* ── REVEAL ── */
+.r{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.25,.1,.25,1),transform .8s cubic-bezier(.25,.1,.25,1)}
+.r.v{opacity:1;transform:none}
+.r-d1{transition-delay:.1s}
+.r-d2{transition-delay:.2s}
+.r-d3{transition-delay:.3s}
 </style>
 </head>
 <body>
 
-<!-- Page load animation -->
-<div class="loader" id="loader" aria-hidden="true">
-  <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-    <rect x="6" y="6" width="68" height="68" fill="none" stroke="#1a1714" stroke-width="2.8" rx="5"/>
-    <polygon points="74,6 74,34 46,6" fill="#1a1714" opacity="0.18"/>
-    <line x1="46" y1="6" x2="74" y2="34" stroke="#1a1714" stroke-width="2" opacity="0.45"/>
-  </svg>
-</div>
-
-<!-- ─── NAV ─── -->
-<nav>
-  <a href="index.html" class="nav-logo">
-    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="6" width="68" height="68" fill="none" stroke="#1a1714" stroke-width="2.8" rx="5"/>
-      <polygon points="74,6 74,34 46,6" fill="#1a1714" opacity="0.18"/>
-      <line x1="46" y1="6" x2="74" y2="34" stroke="#1a1714" stroke-width="2" opacity="0.45"/>
-    </svg>
-    <span>revise</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="current">Forside</a></li>
-    <li><a href="ydelser.html">Ydelser</a></li>
-    <li><a href="loesninger.html">L&oslash;sninger</a></li>
-    <li><a href="om.html">Om os</a></li>
-  </ul>
-  <a href="kontakt.html" class="nav-cta">Kontakt os</a>
-  <button class="mobile-toggle" aria-label="Abn menu"><span></span><span></span><span></span></button>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">revise</a>
+    <ul class="nav-links">
+      <li><a href="ydelser.html">Ydelser</a></li>
+      <li><a href="loesninger.html">L&oslash;sninger</a></li>
+      <li><a href="om.html">Om os</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta">Start dit projekt</a>
+  </div>
 </nav>
 
-<!-- Mobile menu overlay -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" onclick="closeMenu()">Forside</a>
-  <a href="ydelser.html" onclick="closeMenu()">Ydelser</a>
-  <a href="loesninger.html" onclick="closeMenu()">L&oslash;sninger</a>
-  <a href="om.html" onclick="closeMenu()">Om os</a>
-  <a href="kontakt.html" class="mobile-cta" onclick="closeMenu()">Kontakt os</a>
-</div>
-
-<main>
-<!-- ─── HERO ─── -->
+<!-- HERO -->
 <section class="hero">
-  <p class="hero-overline">Strategi &middot; Design &middot; Udvikling</p>
-  <h1>Din hjemmeside,<br>revideret.</h1>
-  <p class="hero-sub">Din online tilstedeværelse fortjener en revision. Vi designer og udvikler moderne hjemmesider der skiller sig ud og skaber resultater for din virksomhed.</p>
-  <div class="hero-cta-row">
-    <a href="kontakt.html" class="btn-primary">Start dit projekt</a>
-    <a href="loesninger.html" class="btn-secondary">Se vores l&oslash;sninger</a>
+  <div class="hero-label r">Strategi &middot; Design &middot; Udvikling</div>
+  <h1 class="r r-d1">Din hjemmeside,<br><em>revideret.</em></h1>
+  <p class="hero-desc r r-d2">Vi designer og udvikler moderne hjemmesider der skiller sig ud &mdash; og skaber resultater for din virksomhed.</p>
+  <div class="hero-actions r r-d2">
+    <a href="kontakt.html" class="btn btn-dark">Start dit projekt &rarr;</a>
+    <a href="#cases" class="btn btn-ghost">Se vores arbejde</a>
   </div>
-  <div class="scroll-hint" aria-hidden="true">
-    <span>Scroll</span>
-    <div class="arrow-down"></div>
-  </div>
-  <div class="hero-fold">
-    <svg viewBox="0 0 400 400" width="400" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20" y="20" width="360" height="360" fill="none" stroke="#1a1714" stroke-width="3" rx="12"/>
-      <polygon points="380,20 380,140 260,20" fill="#1a1714" opacity="0.3"/>
-      <line x1="260" y1="20" x2="380" y2="140" stroke="#1a1714" stroke-width="2" opacity="0.5"/>
-    </svg>
+  <div class="hero-devices r r-d3">
+    <img src="assets/devices-clean.png" alt="Hansen VVS hjemmeside vist p&aring; MacBook, iPad og iPhone">
   </div>
 </section>
 
-<!-- ─── VALUE STRIP ─── -->
-<div class="proof-strip">
-  <p>Skræddersyet design · Moderne teknologi · Hurtig levering · Personlig kontakt</p>
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="r"><div class="stat-num" data-count="4" data-suffix="x">0x</div><div class="stat-label">Hurtigere load-tid</div></div>
+    <div class="r r-d1"><div class="stat-num" data-count="97" data-suffix="+">0+</div><div class="stat-label">Google Lighthouse</div></div>
+    <div class="r r-d2"><div class="stat-num" data-count="100" data-suffix="%">0%</div><div class="stat-label">Mobil-optimeret</div></div>
+    <div class="r r-d3"><div class="stat-num" data-count="24" data-suffix="t">0t</div><div class="stat-label">Svar p&aring; henvendelse</div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services s-pad" id="ydelser">
+  <div class="s-inner">
+    <div class="eyebrow r">Ydelser</div>
+    <h2 class="s-h2 r">Alt du har brug for.<br>Intet du ikke har.</h2>
+    <p class="s-desc r">Fra design til deployment &mdash; altid med fokus p&aring; kvalitet, hastighed og dit brands identitet.</p>
+    <div class="srv-grid r">
+      <div class="srv-card">
+        <div class="srv-num">01</div>
+        <h3>Webdesign</h3>
+        <p>Skr&aelig;ddersyede designs der reflekterer dit brand. Ingen templates &mdash; alt bygges fra bunden med din vision i centrum.</p>
+      </div>
+      <div class="srv-card">
+        <div class="srv-num">02</div>
+        <h3>Udvikling</h3>
+        <p>Clean code, hurtige load-tider, og responsivt design. Vi bygger med moderne teknologier der skalerer med din forretning.</p>
+      </div>
+      <div class="srv-card">
+        <div class="srv-num">03</div>
+        <h3>SEO &amp; Performance</h3>
+        <p>Optimeret til s&oslash;gemaskiner fra dag &eacute;t. Vi s&oslash;rger for at din side er hurtig, tilg&aelig;ngelig og synlig.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMATION -->
+<section class="transform s-pad" id="cases">
+  <div class="s-inner">
+    <div class="eyebrow r">Cases</div>
+    <h2 class="s-h2 r">Samme virksomhed.<br>Helt nyt f&oslash;rsteindtryk.</h2>
+    <p class="s-desc r">Hansen VVS i Vejle &mdash; fra en hjemmeside fra 2008 til en moderne platform der konverterer bes&oslash;gende til kunder.</p>
+    <div class="slider-wrap r" id="slider">
+      <img class="slider-img-after" src="assets/desk-efter.png" alt="Hansen VVS — ny hjemmeside">
+      <img class="slider-img-before" src="assets/desk-foer.png" alt="Hansen VVS — gammel hjemmeside">
+      <div class="slider-handle" id="sliderHandle">
+        <div class="slider-knob">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(6,0)"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="slider-labels r">
+      <div class="slider-label"><div class="slider-label-dot dot-green"></div>Efter <span>&middot; Lighthouse 97</span></div>
+      <div class="slider-label"><div class="slider-label-dot dot-red"></div>F&oslash;r <span>&middot; Lighthouse 23</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTHOUSE -->
+<section class="lighthouse s-pad">
+  <div class="s-inner">
+    <div class="eyebrow r">F&oslash;r &amp; efter</div>
+    <h2 class="s-h2 r">M&aring;lt med Googles<br>egne standarder.</h2>
+    <p class="s-desc r">Se forskellen en revision g&oslash;r &mdash; direkte fra Google Lighthouse.</p>
+    <div class="ba-grid">
+      <div class="ba-card r">
+        <div class="ba-tag ba-tag-red">F&oslash;r revision</div>
+        <div class="ba-scores">
+          <div class="ba-score"><div class="ba-score-num red">23</div><div class="ba-score-label">Performance</div></div>
+          <div class="ba-score"><div class="ba-score-num red">38</div><div class="ba-score-label">Tilg&aelig;ngelighed</div></div>
+          <div class="ba-score"><div class="ba-score-num orange">52</div><div class="ba-score-label">Best Practices</div></div>
+          <div class="ba-score"><div class="ba-score-num red">41</div><div class="ba-score-label">SEO</div></div>
+        </div>
+        <ul class="ba-list">
+          <li><span class="x">&#10005;</span> Loadtid: 8.2 sekunder</li>
+          <li><span class="x">&#10005;</span> Ikke mobilvenlig</li>
+          <li><span class="x">&#10005;</span> Mangler SSL-certifikat</li>
+        </ul>
+      </div>
+      <div class="ba-card ba-after r r-d1">
+        <div class="ba-tag ba-tag-green">Efter revision</div>
+        <div class="ba-scores">
+          <div class="ba-score"><div class="ba-score-num green">97</div><div class="ba-score-label">Performance</div></div>
+          <div class="ba-score"><div class="ba-score-num green">95</div><div class="ba-score-label">Tilg&aelig;ngelighed</div></div>
+          <div class="ba-score"><div class="ba-score-num green">100</div><div class="ba-score-label">Best Practices</div></div>
+          <div class="ba-score"><div class="ba-score-num green">98</div><div class="ba-score-label">SEO</div></div>
+        </div>
+        <ul class="ba-list">
+          <li><span class="ok">&#10003;</span> Loadtid: 0.8 sekunder</li>
+          <li><span class="ok">&#10003;</span> Fuldt mobilvenlig</li>
+          <li><span class="ok">&#10003;</span> SSL-sikret forbindelse</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="proof s-pad">
+  <div class="proof-inner">
+    <div class="proof-stars r">
+      <svg class="proof-star" viewBox="0 0 24 24" fill="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#00b67a"/></svg>
+      <svg class="proof-star" viewBox="0 0 24 24" fill="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#00b67a"/></svg>
+      <svg class="proof-star" viewBox="0 0 24 24" fill="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#00b67a"/></svg>
+      <svg class="proof-star" viewBox="0 0 24 24" fill="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#00b67a"/></svg>
+      <svg class="proof-star" viewBox="0 0 24 24" fill="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#00b67a"/></svg>
+    </div>
+    <blockquote class="proof-quote r r-d1">&ldquo;Vi fik en helt ny hjemmeside p&aring; under to uger. Den er hurtig, flot og vi f&aring;r allerede flere henvendelser end f&oslash;r.&rdquo;</blockquote>
+    <div class="proof-author r r-d2">
+      <span class="proof-name">Michael Hansen</span>
+      <span class="proof-role">Indehaver, Hansen VVS &mdash; Vejle</span>
+    </div>
+    <div class="proof-tp r r-d2">
+      <svg viewBox="0 0 126 31" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M33.4 12.7l-10.2-1.5L18.6 1.6 14 11.2 3.8 12.7l7.4 7.2-1.7 10.2 9.1-4.8 9.1 4.8-1.7-10.2 7.4-7.2z" fill="#00b67a"/><path d="M23.5 22.1l-.8-4.8 3.5-3.4-4.8-.7L18.6 9l-2.8 4.2-4.8.7 3.5 3.4-.8 4.8 4.9-2.2 4.9 2.2z" fill="#005128"/><text x="40" y="22" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#1d1d1f">Trustpilot</text></svg>
+      <span>4.9 / 5 &middot; Fremragende</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process s-pad" id="proces">
+  <div class="s-inner">
+    <div class="eyebrow r">S&aring;dan arbejder vi</div>
+    <h2 class="s-h2 r">Fra id&eacute; til lancering<br>p&aring; 14 dage.</h2>
+    <p class="s-desc r">Ingen un&oslash;dvendige m&oslash;der eller lange processer. Vi g&aring;r direkte til sagen.</p>
+    <div class="process-grid">
+      <div class="process-card r">
+        <div class="process-step">01</div>
+        <h3>Strategi</h3>
+        <p>En kort samtale om din virksomhed, dine kunder og dine m&aring;l. Vi analyserer din nuv&aelig;rende side og laver en plan.</p>
+      </div>
+      <div class="process-card r r-d1">
+        <div class="process-step">02</div>
+        <h3>Design &amp; Udvikling</h3>
+        <p>Design og udvikling k&oslash;rer parallelt. Du f&aring;r en live preview du kan f&oslash;lge med i og give feedback undervejs.</p>
+      </div>
+      <div class="process-card r r-d2">
+        <div class="process-step">03</div>
+        <h3>Lancering</h3>
+        <p>Vi s&aelig;tter den i produktion, ops&aelig;tter analytics og s&oslash;rger for at alt performer som det skal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+<section class="cta" id="kontakt">
+  <div class="eyebrow r" style="color:rgba(255,255,255,.3)">Kontakt</div>
+  <h2 class="s-h2 r">Klar til at starte?</h2>
+  <p class="s-desc r" style="color:rgba(255,255,255,.45);margin:0 auto 40px">Fort&aelig;l os om din virksomhed &mdash; vi vender tilbage inden for 24 timer med en plan og et tilbud.</p>
+  <a href="kontakt.html" class="btn-white r">Kontakt os &rarr;</a>
+</section>
 </div>
 
-<!-- ─── SERVICES TEASER (3 cards) ─── -->
-<section>
-  <div class="reveal">
-    <p class="section-label">Ydelser</p>
-    <h2 class="section-title">Alt du har brug for.<br>Intet du ikke har.</h2>
-    <p class="section-desc">Vi tilbyder en komplet pakke fra design til deployment — altid med fokus på kvalitet, hastighed og dit brands identitet.</p>
-  </div>
-  <div class="services-grid reveal">
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <rect x="2" y="2" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" rx="4"/>
-        <line x1="2" y1="12" x2="38" y2="12" stroke="currentColor" stroke-width="1"/>
-        <rect x="8" y="18" width="12" height="8" fill="none" stroke="currentColor" stroke-width="1" rx="1"/>
-      </svg>
-      <h3>Webdesign</h3>
-      <p>Skræddersyede designs der reflekterer dit brand. Ingen templates — alt bygges fra bunden med din vision i centrum.</p>
-    </div>
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <polyline points="12,14 4,22 12,30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <polyline points="28,14 36,22 28,30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="22" y1="10" x2="18" y2="34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-      <h3>Udvikling</h3>
-      <p>Clean code, hurtige load-tider, og responsivt design. Vi bygger med moderne teknologier der skalerer med din forretning.</p>
-    </div>
-    <div class="service-card">
-      <svg class="service-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M20,4 A16,16 0 0,1 36,20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-        <circle cx="20" cy="20" r="3" fill="currentColor" opacity="0.4"/>
-      </svg>
-      <h3>SEO & Performance</h3>
-      <p>Optimeret til søgemaskiner fra dag ét. Vi sørger for at din side er hurtig, tilgængelig og synlig i søgeresultaterne.</p>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">&copy; 2026 Revise. Alle rettigheder forbeholdes.</div>
+    <div class="footer-right">
+      <a href="mailto:kontakt@revise.dk">kontakt@revise.dk</a>
+      <a href="tel:+4523907290">+45 23 90 72 90</a>
     </div>
   </div>
-  <div class="reveal" style="text-align:center;">
-    <a href="ydelser.html" class="section-more">Se alle ydelser &rarr;</a>
-  </div>
-</section>
-
-<!-- ─── BEFORE / AFTER ─── -->
-<section>
-  <div class="reveal">
-    <p class="section-label">F&oslash;r &amp; efter</p>
-    <h2 class="section-title">Din hjemmeside,<br>revideret.</h2>
-    <p class="section-desc">Se forskellen en revision g&oslash;r — m&aring;lt med Googles egne kvalitetsstandarder.</p>
-  </div>
-
-  <div class="compare reveal" id="compareSection">
-    <!-- BEFORE -->
-    <div class="compare-card compare-before">
-      <div class="compare-label"><span class="dot"></span> F&oslash;r revision</div>
-      <div class="gauges">
-        <div class="gauge-item">
-          <div class="gauge-wrap">
-            <svg class="gauge" viewBox="0 0 120 120">
-              <circle class="gauge-tint red" cx="60" cy="60" r="46"/>
-              <circle class="gauge-bg" cx="60" cy="60" r="50"/>
-              <circle class="gauge-fill red" cx="60" cy="60" r="50" stroke-dasharray="314.2" stroke-dashoffset="314.2" data-score="23"/>
-              <text class="gauge-score red" x="60" y="62" data-score="23">0</text>
-            </svg>
-          </div>
-          <span class="gauge-label">Performance</span>
-        </div>
-        <div class="gauge-item">
-          <div class="gauge-wrap">
-            <svg class="gauge" viewBox="0 0 120 120">
-              <circle class="gauge-tint red" cx="60" cy="60" r="46"/>
-              <circle class="gauge-bg" cx="60" cy="60" r="50"/>
-              <circle class="gauge-fill red" cx="60" cy="60" r="50" stroke-dasharray="314.2" stroke-dashoffset="314.2" data-score="38"/>
-              <text class="gauge-score red" x="60" y="62" data-score="38">0</text>
-            </svg>
-          </div>
-          <span class="gauge-label">Tilg&aelig;ngelighed</span>
-        </div>
-        <div class="gauge-item">
-          <div class="gauge-wrap">
-            <svg class="gauge" viewBox="0 0 120 120">
-              <circle class="gauge-tint orange" cx="60" cy="60" r="46"/>
-              <circle class="gauge-bg" cx="60" cy="60" r="50"/>
-              <circle class="gauge-fill orange" cx="60" cy="60" r="50" stroke-dasharray="314.2" stroke-dashoffset="314.2" data-score="52"/>
-              <text class="gauge-score orange" x="60" y="62" data-score="52">0</text>
-            </svg>
-          </div>
-          <span class="gauge-label">Best Practices</span>
-        </div>
-        <div class="gauge-item">
-          <div class="gauge-wrap">
-            <svg class="gauge" viewBox="0 0 120 120">
-              <circle class="gauge-tint red" cx="60" cy="60" r="46"/>
-              <circle class="gauge-bg" cx="60" cy="60" r="50"/>
-              <circle class="gauge-fill red" cx="60" cy="60" r="50" stroke-dasharray="314.2" stroke-dashoffset="314.2" data-score="41"/>
-              <text class="gauge-score red" x="60" y="62" data-score="41">0</text>
-            </svg>
-          </div>
-          <span class="gauge-label">SEO</span>
-        </div>
-      </div>
-      <div class="compare-extras">
-        <div class="extra"><span class="extra-icon">&#10005;</span> Loadtid: 8.2 sekunder</div>
-        <div class="extra"><span class="extra-icon">&#10005;</span> Ikke mobilvenlig</div>
-        <div class="extra"><span class="extra-icon">&#10005;</span> Mangler SSL-certifikat</div>
-      </div>
-    </div>
-
-    <!-- ARROW -->
-    <div class="compare-arrow">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-
-    <!-- AFTER -->
-    <div class="compare-card compare-after">
-      <div class="compare-label"><span class="dot"></span> Efter revision</div>
-      <div class="gauges">
-        <div class="gauge-item">
-          <div class="gauge-wrap">
-            <svg class="gauge" viewBox="0 0 120 120">
-              <circle class="gauge-tint green" cx="60" cy="60" r="46"/>
-              <circle class="gauge-bg" cx="60" cy="60" r="50"/>
-              <circle class="gauge-fill green" cx="60" cy="60" r="50" stroke-dasharray="314.2" stroke-dashoffset="314.2" data-score="97"/>
-              <text class="gauge-score green" x="60" y="62" data-score="97">0</text>
-            </svg>
-          </div>
-          <span class="gauge-label">Performance</span>
-        </div>
-        <div class="gauge-item">
-          <div class="gauge-wrap">
-            <svg class="gauge" viewBox="0 0 120 120">
-              <circle class="gauge-tint green" cx="60" cy="60" r="46"/>
-              <circle class="gauge-bg" cx="60" cy="60" r="50"/>
-              <circle class="gauge-fill green" cx="60" cy="60" r="50" stroke-dasharray="314.2" stroke-dashoffset="314.2" data-score="95"/>
-              <text class="gauge-score green" x="60" y="62" data-score="95">0</text>
-            </svg>
-          </div>
-          <span class="gauge-label">Tilg&aelig;ngelighed</span>
-        </div>
-        <div class="gauge-item">
-          <div class="gauge-wrap">
-            <svg class="gauge" viewBox="0 0 120 120">
-              <circle class="gauge-tint green" cx="60" cy="60" r="46"/>
-              <circle class="gauge-bg" cx="60" cy="60" r="50"/>
-              <circle class="gauge-fill green" cx="60" cy="60" r="50" stroke-dasharray="314.2" stroke-dashoffset="314.2" data-score="100"/>
-              <text class="gauge-score green" x="60" y="62" data-score="100">0</text>
-            </svg>
-          </div>
-          <span class="gauge-label">Best Practices</span>
-        </div>
-        <div class="gauge-item">
-          <div class="gauge-wrap">
-            <svg class="gauge" viewBox="0 0 120 120">
-              <circle class="gauge-tint green" cx="60" cy="60" r="46"/>
-              <circle class="gauge-bg" cx="60" cy="60" r="50"/>
-              <circle class="gauge-fill green" cx="60" cy="60" r="50" stroke-dasharray="314.2" stroke-dashoffset="314.2" data-score="98"/>
-              <text class="gauge-score green" x="60" y="62" data-score="98">0</text>
-            </svg>
-          </div>
-          <span class="gauge-label">SEO</span>
-        </div>
-      </div>
-      <div class="compare-extras">
-        <div class="extra"><span class="extra-icon">&#10003;</span> Loadtid: 0.8 sekunder</div>
-        <div class="extra"><span class="extra-icon">&#10003;</span> Fuldt mobilvenlig</div>
-        <div class="extra"><span class="extra-icon">&#10003;</span> SSL-sikret forbindelse</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── WEBSITE SLIDER ─── -->
-<section>
-  <div class="reveal" style="text-align:center; margin-bottom: 48px;">
-    <p class="section-label">Se forskellen</p>
-    <h2 class="section-title">Samme virksomhed.<br>Helt nyt f&oslash;rsteindtryk.</h2>
-    <p class="section-desc">Tr&aelig;k i slideren og se transformationen fra en typisk h&aring;ndv&aelig;rker-hjemmeside til en professionel online tilstedev&aelig;relse.</p>
-  </div>
-
-  <div class="reveal">
-    <div class="slider-container" id="imageSlider">
-      <div class="slider-img slider-after">
-        <img src="assets/slide-efter.jpg?v=4" alt="Hjemmeside efter revision af Revise" draggable="false" width="1280" height="800">
-        <span class="slider-badge slider-badge-after">Efter</span>
-      </div>
-      <div class="slider-img slider-before">
-        <img src="assets/slide-foer.jpg" alt="Typisk hjemmeside f&oslash;r revision" draggable="false" width="1280" height="800" loading="lazy">
-        <span class="slider-badge slider-badge-before">F&oslash;r</span>
-      </div>
-      <div class="slider-handle" id="sliderHandle">
-        <div class="slider-line"></div>
-        <div class="slider-grip">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M6 10L2 10M2 10L5 7M2 10L5 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M14 10L18 10M18 10L15 7M18 10L15 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="slider-line"></div>
-      </div>
-    </div>
-    <div style="display:flex; justify-content:space-between; max-width:900px; margin:12px auto 0; padding:0 4px;">
-      <span style="font-size:12px; color:rgba(26,23,20,0.3); letter-spacing:0.5px;">hansenvvs.dk &mdash; f&oslash;r</span>
-      <span style="font-size:12px; color:rgba(26,23,20,0.3); letter-spacing:0.5px;">hansenvvs.dk &mdash; efter</span>
-    </div>
-  </div>
-
-  <div class="reveal demo-links">
-    <a href="demo/foer/" class="demo-box">
-      <span class="demo-box-label">F&oslash;r</span>
-      <span class="demo-box-text">Se den gamle side live</span>
-      <span class="demo-box-arrow">&rarr;</span>
-    </a>
-    <a href="demo/efter/" class="demo-box">
-      <span class="demo-box-label">Efter</span>
-      <span class="demo-box-text">Se den nye side live</span>
-      <span class="demo-box-arrow">&rarr;</span>
-    </a>
-  </div>
-</section>
-
-<!-- ─── CTA BAND ─── -->
-<section class="cta-section">
-  <div class="reveal">
-    <p class="section-label">Kontakt</p>
-    <h2 class="section-title">Klar til at starte dit næste projekt?</h2>
-    <p class="section-desc">Fortæl os om din idé — vi vender tilbage inden for 24 timer.</p>
-    <a href="kontakt.html" class="btn-primary">Kontakt os</a>
-  </div>
-</section>
-
-</main>
-
-<!-- ─── FOOTER ─── -->
-<footer>
-  <div class="footer-left">
-    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="6" width="68" height="68" fill="none" stroke="#1a1714" stroke-width="2.4" rx="4"/>
-      <polygon points="74,6 74,34 46,6" fill="#1a1714" opacity="0.18"/>
-      <line x1="46" y1="6" x2="74" y2="34" stroke="#1a1714" stroke-width="1.8" opacity="0.45"/>
-    </svg>
-    <span>&copy; 2026 Revise. Alle rettigheder forbeholdes.</span>
-  </div>
-  <ul class="footer-links">
-    <li><a href="mailto:kontakt@revise.dk">kontakt@revise.dk</a></li>
-    <li><a href="tel:+4523907290">+45 23 90 72 90</a></li>
-  </ul>
 </footer>
 
-<!-- ─── SCRIPTS ─── -->
-<script src="app.js" defer></script>
 <script>
-  // Page load animation
-  const loader = document.getElementById('loader');
-  if (loader) {
-    setTimeout(() => loader.classList.add('done'), 600);
-    setTimeout(() => loader.remove(), 1100);
-  }
+// Nav blur
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40)});
 
-  // Hide scroll hint after scrolling
-  const scrollHint = document.querySelector('.scroll-hint');
-  if (scrollHint) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) scrollHint.style.opacity = '0';
-    }, { passive: true });
-  }
+// Reveal on scroll
+var ro=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');ro.unobserve(e.target)}});
+},{threshold:.08,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.r').forEach(function(el){ro.observe(el)});
 
-  // Lighthouse gauge animation
-  const CIRC = 314.2; // 2 * PI * 50
-  let gaugesAnimated = false;
-
-  const gaugeObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting && !gaugesAnimated) {
-        gaugesAnimated = true;
-        gaugeObs.unobserve(e.target);
-
-        // Animate each gauge
-        document.querySelectorAll('.gauge-fill[data-score]').forEach(circle => {
-          const score = parseInt(circle.dataset.score);
-          const offset = CIRC * (1 - score / 100);
-          circle.style.strokeDashoffset = offset;
-        });
-
-        // Animate score numbers
-        document.querySelectorAll('.gauge-score[data-score]').forEach(text => {
-          const target = parseInt(text.dataset.score);
-          let current = 0;
-          const duration = 1200;
-          const start = performance.now();
-
-          function tick(now) {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            // Ease out cubic
-            const eased = 1 - Math.pow(1 - progress, 3);
-            current = Math.round(eased * target);
-            text.textContent = current;
-            if (progress < 1) requestAnimationFrame(tick);
+// Animated counters
+(function(){
+  var counted=false;
+  var counters=document.querySelectorAll('[data-count]');
+  var cObserver=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting&&!counted){
+        counted=true;
+        counters.forEach(function(el){
+          var target=parseInt(el.getAttribute('data-count'));
+          var suffix=el.getAttribute('data-suffix')||'';
+          var duration=1200;
+          var start=performance.now();
+          function tick(now){
+            var elapsed=now-start;
+            var progress=Math.min(elapsed/duration,1);
+            var ease=1-Math.pow(1-progress,3);
+            var current=Math.round(target*ease);
+            el.textContent=current+suffix;
+            if(progress<1)requestAnimationFrame(tick);
           }
           requestAnimationFrame(tick);
         });
+        cObserver.disconnect();
       }
     });
-  }, { threshold: 0.3 });
+  },{threshold:.3});
+  if(counters.length)cObserver.observe(counters[0].closest('.stats'));
+})();
 
-  const compareEl = document.getElementById('compareSection');
-  if (compareEl) gaugeObs.observe(compareEl);
+// Before/After slider
+(function(){
+  var slider=document.getElementById('slider');
+  var handle=document.getElementById('sliderHandle');
+  if(!slider||!handle) return;
+  var before=slider.querySelector('.slider-img-before');
+  var dragging=false;
 
-  // ─── Before/After Image Slider ───
-  (function() {
-    const container = document.getElementById('imageSlider');
-    if (!container) return;
+  function setPosition(x){
+    var rect=slider.getBoundingClientRect();
+    var pct=Math.max(0,Math.min(1,(x-rect.left)/rect.width))*100;
+    before.style.clipPath='inset(0 0 0 '+pct+'%)';
+    handle.style.left=pct+'%';
+  }
 
-    const before = container.querySelector('.slider-before');
-    const handle = container.querySelector('.slider-handle');
-    let dragging = false;
+  slider.addEventListener('mousedown',function(e){dragging=true;setPosition(e.clientX);e.preventDefault()});
+  window.addEventListener('mousemove',function(e){if(dragging)setPosition(e.clientX)});
+  window.addEventListener('mouseup',function(){dragging=false});
 
-    function setPosition(x) {
-      const rect = container.getBoundingClientRect();
-      let pct = ((x - rect.left) / rect.width) * 100;
-      pct = Math.max(2, Math.min(98, pct));
-      before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
-      handle.style.left = pct + '%';
-    }
-
-    // Mouse
-    container.addEventListener('mousedown', function(e) {
-      e.preventDefault();
-      dragging = true;
-      setPosition(e.clientX);
-    });
-    window.addEventListener('mousemove', function(e) {
-      if (!dragging) return;
-      setPosition(e.clientX);
-    });
-    window.addEventListener('mouseup', function() { dragging = false; });
-
-    // Touch
-    container.addEventListener('touchstart', function(e) {
-      dragging = true;
-      setPosition(e.touches[0].clientX);
-    }, { passive: true });
-    window.addEventListener('touchmove', function(e) {
-      if (!dragging) return;
-      setPosition(e.touches[0].clientX);
-    }, { passive: true });
-    window.addEventListener('touchend', function() { dragging = false; });
-  })();
+  slider.addEventListener('touchstart',function(e){dragging=true;setPosition(e.touches[0].clientX)},{passive:true});
+  window.addEventListener('touchmove',function(e){if(dragging)setPosition(e.touches[0].clientX)},{passive:true});
+  window.addEventListener('touchend',function(){dragging=false});
+})();
 </script>
-
-<script src="cookie-consent.js" defer></script>
 </body>
 </html>
