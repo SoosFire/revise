@@ -12,7 +12,11 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Preload critical hero image (LCP element) -->
+<link rel="preload" as="image" href="/assets/devices-clean.webp" type="image/webp" fetchpriority="high">
 
 <!-- FAQ Schema for Google rich snippets -->
 <script type="application/ld+json">
@@ -410,7 +414,10 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:
     <a href="#cases" class="btn btn-ghost">Se vores arbejde</a>
   </div>
   <div class="hero-devices r r-d3">
-    <img src="assets/devices-clean.png" alt="Hansen VVS hjemmeside vist p&aring; MacBook, iPad og iPhone">
+    <picture>
+      <source srcset="assets/devices-clean.webp" type="image/webp">
+      <img src="assets/devices-clean.png" alt="Hansen VVS hjemmeside vist p&aring; MacBook, iPad og iPhone" width="1000" height="667" fetchpriority="high" decoding="async">
+    </picture>
   </div>
 </section>
 
@@ -523,8 +530,14 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:
     <h2 class="s-h2 r">Samme virksomhed.<br>Helt nyt f&oslash;rsteindtryk.</h2>
     <p class="s-desc r">Hansen VVS i Vejle &mdash; fra en hjemmeside fra 2008 til en moderne platform der konverterer bes&oslash;gende til kunder.</p>
     <div class="slider-wrap r" id="slider">
-      <img class="slider-img-after" src="assets/desk-efter.png" alt="Hansen VVS — ny hjemmeside">
-      <img class="slider-img-before" src="assets/desk-foer.png" alt="Hansen VVS — gammel hjemmeside">
+      <picture>
+        <source srcset="assets/desk-efter.webp" type="image/webp">
+        <img class="slider-img-after" src="assets/desk-efter.png" alt="Hansen VVS — ny hjemmeside" width="1920" height="1200" loading="lazy" decoding="async">
+      </picture>
+      <picture>
+        <source srcset="assets/desk-foer.webp" type="image/webp">
+        <img class="slider-img-before" src="assets/desk-foer.png" alt="Hansen VVS — gammel hjemmeside" width="1920" height="1200" loading="lazy" decoding="async">
+      </picture>
       <div class="slider-handle" id="sliderHandle">
         <div class="slider-knob">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(6,0)"/></svg>
