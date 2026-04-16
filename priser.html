@@ -105,6 +105,14 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:
 .calc-result-monthly-label{font-size:14px;color:var(--text-mid)}
 .calc-result-monthly-price{font-size:18px;font-weight:700;color:var(--text);letter-spacing:-.3px;transition:opacity .15s}
 .calc-result-monthly-price.updating{opacity:.3}
+.calc-result-market{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+.calc-result-market-label{font-size:13px;color:var(--text-light)}
+.calc-result-market-price{font-size:16px;color:var(--text-light);text-decoration:line-through;font-weight:400;letter-spacing:-.2px;transition:opacity .15s}
+.calc-result-market-price.updating{opacity:.3}
+.calc-result-saving{display:flex;justify-content:space-between;align-items:center;background:rgba(74,143,133,.06);border-radius:12px;padding:12px 16px;margin-bottom:24px}
+.calc-result-saving-label{font-size:13px;color:#4a8f85;font-weight:500}
+.calc-result-saving-amount{font-size:15px;font-weight:700;color:#4a8f85;transition:opacity .15s}
+.calc-result-saving-amount.updating{opacity:.3}
 .calc-result-cta{display:block;text-align:center;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;transition:all .25s;background:var(--text);color:var(--bg-white)}
 .calc-result-cta:hover{opacity:.85;transform:translateY(-1px)}
 
@@ -261,17 +269,17 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:
         <div class="calc-step-label">Trin 1</div>
         <div class="calc-step-title">Antal sider</div>
         <div class="calc-options" id="calcPages">
-          <label class="calc-opt selected" data-value="small" data-base="8995">
+          <label class="calc-opt selected" data-value="small" data-base="8995" data-market="15000">
             <input type="radio" name="pages" value="small" checked>
             1&ndash;5 sider
             <span class="calc-opt-price">8.995 kr.</span>
           </label>
-          <label class="calc-opt" data-value="medium" data-base="17995">
+          <label class="calc-opt" data-value="medium" data-base="17995" data-market="30000">
             <input type="radio" name="pages" value="medium">
             6&ndash;12 sider
             <span class="calc-opt-price">17.995 kr.</span>
           </label>
-          <label class="calc-opt" data-value="large" data-base="27995">
+          <label class="calc-opt" data-value="large" data-base="27995" data-market="50000">
             <input type="radio" name="pages" value="large">
             13+ sider
             <span class="calc-opt-price">27.995 kr.</span>
@@ -284,20 +292,20 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:
         <div class="calc-step-label">Trin 2</div>
         <div class="calc-step-title">Design</div>
         <div class="calc-options" id="calcDesign">
-          <label class="calc-opt selected" data-value="standard" data-add="0">
+          <label class="calc-opt selected" data-value="standard" data-add="0" data-market="0">
             <input type="radio" name="design" value="standard" checked>
             Standard design
             <span class="calc-opt-price">Inkluderet</span>
           </label>
-          <label class="calc-opt" data-value="custom" data-add="6000">
+          <label class="calc-opt" data-value="custom" data-add="3500" data-market="7500">
             <input type="radio" name="design" value="custom">
             Custom design
-            <span class="calc-opt-price">+ 6.000 kr.</span>
+            <span class="calc-opt-price">+ 3.500 kr.</span>
           </label>
-          <label class="calc-opt" data-value="premium" data-add="14000">
+          <label class="calc-opt" data-value="premium" data-add="7500" data-market="16000">
             <input type="radio" name="design" value="premium">
             Premium skr&aelig;ddersyet
-            <span class="calc-opt-price">+ 14.000 kr.</span>
+            <span class="calc-opt-price">+ 7.500 kr.</span>
           </label>
         </div>
       </div>
@@ -307,30 +315,30 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:
         <div class="calc-step-label">Trin 3</div>
         <div class="calc-step-title">Funktionalitet</div>
         <div class="calc-options" id="calcFeatures">
-          <label class="calc-opt selected" data-value="kontakt" data-add="0">
+          <label class="calc-opt selected" data-value="kontakt" data-add="0" data-market="0">
             <input type="checkbox" name="features" value="kontakt" checked>
             Kontaktformular
             <span class="calc-opt-price">Inkluderet</span>
           </label>
-          <label class="calc-opt" data-value="cms" data-add="4000">
+          <label class="calc-opt" data-value="cms" data-add="2495" data-market="5500">
             <input type="checkbox" name="features" value="cms">
             CMS (WordPress/headless)
-            <span class="calc-opt-price">+ 4.000 kr.</span>
+            <span class="calc-opt-price">+ 2.495 kr.</span>
           </label>
-          <label class="calc-opt" data-value="ecommerce" data-add="8000">
+          <label class="calc-opt" data-value="ecommerce" data-add="4995" data-market="12000">
             <input type="checkbox" name="features" value="ecommerce">
             E-commerce / webshop
-            <span class="calc-opt-price">+ 8.000 kr.</span>
+            <span class="calc-opt-price">+ 4.995 kr.</span>
           </label>
-          <label class="calc-opt" data-value="booking" data-add="5000">
+          <label class="calc-opt" data-value="booking" data-add="2995" data-market="7000">
             <input type="checkbox" name="features" value="booking">
             Booking system
-            <span class="calc-opt-price">+ 5.000 kr.</span>
+            <span class="calc-opt-price">+ 2.995 kr.</span>
           </label>
-          <label class="calc-opt" data-value="api" data-add="6000">
+          <label class="calc-opt" data-value="api" data-add="3495" data-market="8000">
             <input type="checkbox" name="features" value="api">
             API integrationer
-            <span class="calc-opt-price">+ 6.000 kr.</span>
+            <span class="calc-opt-price">+ 3.495 kr.</span>
           </label>
         </div>
       </div>
@@ -340,25 +348,25 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:
         <div class="calc-step-label">Trin 4</div>
         <div class="calc-step-title">Ekstra</div>
         <div class="calc-options" id="calcExtras">
-          <label class="calc-opt" data-value="seo" data-add="2995" data-type="once">
+          <label class="calc-opt" data-value="seo" data-add="1495" data-market="4000" data-type="once">
             <input type="checkbox" name="extras" value="seo">
             SEO optimering
-            <span class="calc-opt-price">+ 2.995 kr.</span>
+            <span class="calc-opt-price">+ 1.495 kr.</span>
           </label>
-          <label class="calc-opt" data-value="hosting" data-add="299" data-type="monthly">
+          <label class="calc-opt" data-value="hosting" data-add="299" data-market="499" data-type="monthly">
             <input type="checkbox" name="extras" value="hosting">
             Hosting &amp; drift
             <span class="calc-opt-price">+ 299 kr./md.</span>
           </label>
-          <label class="calc-opt" data-value="vedligeholdelse" data-add="499" data-type="monthly">
+          <label class="calc-opt" data-value="vedligeholdelse" data-add="499" data-market="999" data-type="monthly">
             <input type="checkbox" name="extras" value="vedligeholdelse">
             Vedligeholdelse
             <span class="calc-opt-price">+ 499 kr./md.</span>
           </label>
-          <label class="calc-opt" data-value="logo" data-add="4995" data-type="once">
+          <label class="calc-opt" data-value="logo" data-add="2495" data-market="6000" data-type="once">
             <input type="checkbox" name="extras" value="logo">
             Logo design
-            <span class="calc-opt-price">+ 4.995 kr.</span>
+            <span class="calc-opt-price">+ 2.495 kr.</span>
           </label>
         </div>
       </div>
@@ -372,6 +380,14 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:
         <div class="calc-result-total">
           <div class="calc-result-total-label">Engangspris</div>
           <div class="calc-result-total-price" id="calcTotalOnce">8.995 kr.</div>
+        </div>
+        <div class="calc-result-market" id="calcMarketRow">
+          <div class="calc-result-market-label">Typisk markedspris</div>
+          <div class="calc-result-market-price" id="calcMarketPrice">15.000 kr.</div>
+        </div>
+        <div class="calc-result-saving" id="calcSavingRow">
+          <div class="calc-result-saving-label">Du sparer</div>
+          <div class="calc-result-saving-amount" id="calcSavingAmount">6.005 kr. (40%)</div>
         </div>
         <div class="calc-result-monthly" id="calcMonthlyRow" style="display:none">
           <div class="calc-result-monthly-label">M&aring;nedlig pris</div>
@@ -470,12 +486,9 @@ document.querySelectorAll('.r').forEach(function(el){ro.observe(el)});
     var opts=container.querySelectorAll('.calc-opt');
     opts.forEach(function(opt){
       opt.addEventListener('click',function(e){
-        // Allow the checkbox to toggle if clicking directly on it
+        e.preventDefault();
         var cb=opt.querySelector('input');
-        // If the click target is not the checkbox itself, toggle manually
-        if(e.target!==cb){
-          cb.checked=!cb.checked;
-        }
+        cb.checked=!cb.checked;
         opt.classList.toggle('selected',cb.checked);
         recalc();
       });
@@ -491,13 +504,17 @@ document.querySelectorAll('.r').forEach(function(el){ro.observe(el)});
     var items=[];
     var totalOnce=0;
     var totalMonthly=0;
+    var marketOnce=0;
+    var marketMonthly=0;
 
     // Pages (base)
     var pagesContainer=document.getElementById('calcPages');
     var selPage=pagesContainer.querySelector('.calc-opt.selected');
     if(selPage){
       var base=parseInt(selPage.getAttribute('data-base'))||0;
+      var mBase=parseInt(selPage.getAttribute('data-market'))||0;
       totalOnce+=base;
+      marketOnce+=mBase;
       items.push({label:labels[selPage.getAttribute('data-value')]||'',price:formatPrice(base)+' kr.',type:'base'});
     }
 
@@ -506,7 +523,9 @@ document.querySelectorAll('.r').forEach(function(el){ro.observe(el)});
     var selDesign=designContainer.querySelector('.calc-opt.selected');
     if(selDesign){
       var add=parseInt(selDesign.getAttribute('data-add'))||0;
+      var mAdd=parseInt(selDesign.getAttribute('data-market'))||0;
       totalOnce+=add;
+      marketOnce+=mAdd;
       var dVal=selDesign.getAttribute('data-value');
       if(add>0){
         items.push({label:labels[dVal]||'',price:'+ '+formatPrice(add)+' kr.',type:'add'});
@@ -521,7 +540,9 @@ document.querySelectorAll('.r').forEach(function(el){ro.observe(el)});
     checkedFeats.forEach(function(cb){
       var opt=cb.closest('.calc-opt');
       var add=parseInt(opt.getAttribute('data-add'))||0;
+      var mAdd=parseInt(opt.getAttribute('data-market'))||0;
       totalOnce+=add;
+      marketOnce+=mAdd;
       var val=opt.getAttribute('data-value');
       if(add>0){
         items.push({label:labels[val]||'',price:'+ '+formatPrice(add)+' kr.',type:'add'});
@@ -536,13 +557,16 @@ document.querySelectorAll('.r').forEach(function(el){ro.observe(el)});
     checkedExts.forEach(function(cb){
       var opt=cb.closest('.calc-opt');
       var add=parseInt(opt.getAttribute('data-add'))||0;
+      var mAdd=parseInt(opt.getAttribute('data-market'))||0;
       var type=opt.getAttribute('data-type')||'once';
       var val=opt.getAttribute('data-value');
       if(type==='monthly'){
         totalMonthly+=add;
+        marketMonthly+=mAdd;
         items.push({label:labels[val]||'',price:'+ '+formatPrice(add)+' kr./md.',type:'monthly'});
       } else {
         totalOnce+=add;
+        marketOnce+=mAdd;
         items.push({label:labels[val]||'',price:'+ '+formatPrice(add)+' kr.',type:'add'});
       }
     });
@@ -559,12 +583,24 @@ document.querySelectorAll('.r').forEach(function(el){ro.observe(el)});
     var totalOnceEl=document.getElementById('calcTotalOnce');
     var totalMonthlyEl=document.getElementById('calcTotalMonthly');
     var monthlyRow=document.getElementById('calcMonthlyRow');
+    var marketPriceEl=document.getElementById('calcMarketPrice');
+    var savingAmountEl=document.getElementById('calcSavingAmount');
 
     totalOnceEl.classList.add('updating');
     totalMonthlyEl.classList.add('updating');
+    marketPriceEl.classList.add('updating');
+    savingAmountEl.classList.add('updating');
     setTimeout(function(){
       totalOnceEl.textContent=formatPrice(totalOnce)+' kr.';
       totalOnceEl.classList.remove('updating');
+
+      // Market price & savings
+      var saving=marketOnce-totalOnce;
+      var pct=marketOnce>0?Math.round((saving/marketOnce)*100):0;
+      marketPriceEl.textContent=formatPrice(marketOnce)+' kr.';
+      savingAmountEl.textContent=formatPrice(saving)+' kr. ('+pct+'%)';
+      marketPriceEl.classList.remove('updating');
+      savingAmountEl.classList.remove('updating');
 
       if(totalMonthly>0){
         monthlyRow.style.display='flex';
